@@ -1,0 +1,17 @@
+@import url(//fonts.googleapis.com/css?family=Raleway:100,900,500);
+@import url(//fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css);
+
+$font-default: 'Open Sans', sans-serif;
+$font-article: 'PT Serif', serif;
+$font-navigation: 'Open Sans Condensed', $font-default;
+$font-navigation-weight: 700;
+
+$font-mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
+$font-headings-family: 'Raleway';
+$font-headings-weight: 900;
+$site-subtitle-font-weight: 100;
+
+$font-icon: FontAwesome;
