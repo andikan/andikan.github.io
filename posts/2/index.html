@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>andikan</title>
+  <meta name="author" content="Han-Chih Kuo">
+
+  
+  <meta name="description" content="幾乎每一種程式語言都有各自的template engine，可以讓變數快速產生在web page上，
+各個語言的的template engine與比較可點閱：wiki-Template engine(web) ">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http:///posts/2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="andikan" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35006459-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  <meta http-equiv="refresh" content="0; url=http://blog.andikan.me/posts/2/" />
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">andikan</a></h1>
+  
+    <h2>andikan.blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/26/nodejs-template-engine/">node.js Template Engine</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-09-26T23:56:00+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:56 pm</span></time>
+        
+           | <a href="/blog/2012/09/26/nodejs-template-engine/#disqus_thread"
+             data-disqus-identifier="http:///blog/2012/09/26/nodejs-template-engine/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>幾乎每一種程式語言都有各自的template engine，可以讓變數快速產生在web page上，<br/>
+各個語言的的template engine與比較可點閱：<a href="http://goo.gl/ywsLx">wiki-Template engine(web)</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/09/26/nodejs-template-engine/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/25/operating-management/">翁老師的作業管理</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-09-25T19:39:00+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>7:39 pm</span></time>
+        
+           | <a href="/blog/2012/09/25/operating-management/#disqus_thread"
+             data-disqus-identifier="http:///blog/2012/09/25/operating-management/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>開學第三個禮拜了還是不太清楚翁老師的資訊管理導論和作業管理之間的差別，但今天上完了三節課卻讓我有種想把一些打下來的衝動～隔了一年又聽見翁老師熟悉的論調感覺有不一樣的體會，就好像同一本書不同年齡讀會有不一樣的領悟一般。企業往往從兩個方向提昇競爭力：降低成本和增加生產力，但這兩個因素卻時常會互相衝突，一旦降低成本變降低生產力，增加生產力後也同時增加成本，魚與熊掌不可兼得，這時便需要衡量決策背後的附加價值，附加價值一旦浮現，自然很容易選出適合的決策，而維持企業競爭力很重要的工具即是KPI(Key Performance Indicators)，將一段時期的員工、部門以客觀可衡量的績效指標作為表現，如同儀表板一般決定企業的發展方向，而管理者必須謹慎拿捏KPI的擬定，如同企業的掌舵者，少許的偏差都有可能對企業的成長造成很大的影響。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/09/25/operating-management/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/24/nodejs-environment-setup/">在 Ubuntu 12.04 安裝 node.js</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-09-24T01:50:00+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>1:50 am</span></time>
+        
+           | <a href="/blog/2012/09/24/nodejs-environment-setup/#disqus_thread"
+             data-disqus-identifier="http:///blog/2012/09/24/nodejs-environment-setup/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>使用 nvm(Node Version Manage) 來安裝 node.js,<br/>
+預先需要 curl, git, g++ :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install git-core g++ curl</span></code></pre></td></tr></table></div></figure>
+
+
+<p> <br/>
+接著即可用以下指令安裝 :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git://github.com/creationix/nvm.git ~/.nvm
+</span><span class='line'>$ echo ". ~/.nvm/nvm.sh" >> ~/.bashrc</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/09/24/nodejs-environment-setup/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/23/ubuntu-keyboard-input/">Ubuntu英文介面下的中文輸入(ibus)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-09-23T22:06:00+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>10:06 pm</span></time>
+        
+           | <a href="/blog/2012/09/23/ubuntu-keyboard-input/#disqus_thread"
+             data-disqus-identifier="http:///blog/2012/09/23/ubuntu-keyboard-input/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在 Ubuntu 12.04 下，當使用英文介面時，需要中文輸入時的一些設定,<br/>
+進入system setting -> Language Support 中,<br/>
+在 Keyboard Input method system 選擇 ibus,<br/>
+右上角中即會產生一個鍵盤的小icon, 點下這個icon後選preferences,<br/>
+在Input Method 中勾選 Customize active input methods, 可以點add加入需要的中文輸入法(如新酷音),<br/>
+切換成ibus的input method 預設快速鍵 是Ctrl + space,<br/>
+當右上方沒有出現小鍵盤的icon時, 可下command來重新啟動ibus :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ibus-daemon -x -r -d</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/09/23/ubuntu-keyboard-input/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/22/the-first-post/">第一篇文章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-09-22T05:47:00+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>5:47 am</span></time>
+        
+           | <a href="/blog/2012/09/22/the-first-post/#disqus_thread"
+             data-disqus-identifier="http:///blog/2012/09/22/the-first-post/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>早睡可以讓自己少睡一點<br/>
+晚睡只能讓自己越睡越多, 越睡越累<br/>
+第一篇文章就辭窮了<br/>
+再過幾小時就是第十屆資種的始業式~</p>
+
+<figure class='code'><figcaption><span>Octopress command </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">generate</span> <span class="c1"># Generating Site with Jekyll, Successfully generated site: source -&gt; public</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">preview</span> <span class="c1"># Preview at port 4000</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">deploy</span> <span class="c1"># Github Pages deploy</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rake</span> <span class="n">new_post</span><span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span> <span class="c1"># Create new post</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/index.html">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/24/qt-project-in-xcode/">Qt 4.8.4 Project Created With Qmake Fail to Open in Xcode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/17/judgment-and-decision/">What Can Bring Me Down</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/08/bower-from-twitter/">Bower - a Package Manager for Web</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/cgal-on-macos-x/">CGAL, Qt 在 Mac OS X 安裝編譯與執行</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/30/data-uri/">將瀏覽器變成記事本</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/andikan">@andikan</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'andikan',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/andikan?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/andikan">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Han-Chih Kuo -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'andikanblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

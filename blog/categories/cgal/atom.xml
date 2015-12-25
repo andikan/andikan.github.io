@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Cgal | andikan]]></title>
+  <link href="http:///blog/categories/cgal/atom.xml" rel="self"/>
+  <link href="http:///"/>
+  <updated>2015-12-25T18:33:13+08:00</updated>
+  <id>http:///</id>
+  <author>
+    <name><![CDATA[Han-Chih Kuo]]></name>
+    <email><![CDATA[andikan.io@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CGAL, Qt 在 Mac OS X 安裝編譯與執行]]></title>
+    <link href="http:///blog/2013/04/13/cgal-on-macos-x/"/>
+    <updated>2013-04-13T10:00:07+08:00</updated>
+    <id>http:///blog/2013/04/13/cgal-on-macos-x</id>
+    <content type="html"><![CDATA[<p>這個月買了新電腦，希望將Geometric Modeling課程中的作業轉移到MacOS X上編譯執行，助教和網路上許多教學文都是Windows下用Visual Studio之相關安裝流程，故在轉移上遇到許多問題，但在最後不斷嘗試的結果下終於可以編譯並執行，過程中許多設定還有地方和細節不明就裡，但在此做一個簡短的記錄，go！</p>
+
+<!--more-->
+
+
+<p>剛開始希望能直接使用Xcode作為IDE，並先裝了Xcode，之後再從Xcode中的Preferences -> Downloads 點選下載Command line Tools來安裝編譯器和指令工具如LLVM、Make，再以Homebrew做為套件管理工具來簡化之後安裝流程，以一行指令即可安裝Homebrew：<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="k">$(</span>curl -fsSL &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://raw.github.com/mxcl/homebrew/go&quot;</span>&gt;https://raw.github.com/mxcl/homebrew/go&lt;/a&gt;<span class="k">)</span><span class="p">&amp;</span>rdquo<span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Homebrew可以用來安裝許多套件與程式，透過ruby所寫的formula簡化安裝流程，不用再從每個套件的官方網站下載編譯，接下來就可以用它來一個一個安裝所需要的library與framework了。</p>
+
+<ul>
+<li><p>Boost C++ Libraries
+直接以
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install boost&lt;br/&gt;
+</span></code></pre></td></tr></table></div></figure>
+即可安裝至 /usr/local/Cellar資料夾底下，Homebrew會建立一個Cellar(酒窖)的資料夾來放置一個個套件(bottle)，移除也相當容易，只要：
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew uninstall formula
+</span></code></pre></td></tr></table></div></figure><br/>
+就可以快速的移除不需要的套件，更多formula可以從<a href="https://github.com/mxcl/homebrew/tree/master/Library/Formula">https://github.com/mxcl/homebrew/tree/master/Library/Formula</a> 尋找，或是：
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew search formula
+</span></code></pre></td></tr></table></div></figure><br/>
+來尋找需要的套件。</p></li>
+<li><p>libQGLViewer C++ library, Qt<br/>
+接著安裝3D視覺化相關library，因為此library相依於Qt，故在
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install libqglviewer&lt;br/&gt;
+</span></code></pre></td></tr></table></div></figure><br/>
+過程中就會安裝好Qt與Qt相依的套件，所有套件都會在同一個/usr/local/Cellar資料夾下。</p></li>
+<li><p>Cmake    <br/>
+cross platform make，在安裝CGAL時需用cmake來build。
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install cmake&lt;br/&gt;
+</span></code></pre></td></tr></table></div></figure></p></li>
+<li><p>CGAL    <br/>
+Computational Geometry Algorithms Library<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install cgal <span class="p">&amp;</span>ndash<span class="p">;</span>imaging&lt;br/&gt;
+</span></code></pre></td></tr></table></div></figure><br/>
+安裝時需加上&ndash;imaging選項來增加此library對Qt的支援。</p></li>
+</ul>
+
+
+<p>接下來便可以開始一個Qt project了，先開一個資料夾並把撰寫好的.cpp, .h放進去，先將課程assignment的skeleton code放入此資料夾中，並cd至此資料夾，接著：
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qmake -project  &lt;br/></span></code></pre></td></tr></table></div></figure><br/>
+來產生一個.pro的設定檔，這個設定檔將用來產生Makefile。原本以為可以透過qmake -spec macx-xcode projectname.pro來產生Xcode project設定檔便可以在Xcode上編輯，但一直失敗，無法將專案從Xcode上開啟，但不能氣餒繼續嘗試，開始編輯.pro檔中的設定參數，以下為目前嘗試的設定方法：<br/>
+<figure class='code'><figcaption><span>Here&rsquo;s an example .pro file. </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">TEMPLATE</span> <span class="o">=</span> app
+</span><span class='line'><span class="nv">TARGET</span> <span class="o">=</span>
+</span><span class='line'>DEPENDPATH +<span class="o">=</span> .&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;include headers&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;INCLUDEPATH +<span class="o">=</span> /usr/local/Cellar/cgal/4.1/include <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/gmp/5.1.1/include <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/boost/1.53.0/include <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/libqglviewer/2.3.17/QGLViewer.framework/Headers <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/qt/4.8.4/include&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;include libraries and framework&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;LIBS +<span class="o">=</span> -L/usr/local/Cellar/cgal/4.1/lib <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/gmp/5.1.1/lib <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/boost/1.53.0/lib <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/libqglviewer/2.3.17/QGLViewer.framework/Headers <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/qt/4.8.4/lib
+</span><span class='line'>LIBS +<span class="o">=</span> -lssl -lcrypto
+</span><span class='line'>LIBS +<span class="o">=</span> -lCGAL
+</span><span class='line'>QMAKE_LFLAGS +<span class="o">=</span> -F/usr/local/Cellar/libqglviewer/2.3.17/
+</span><span class='line'>LIBS +<span class="o">=</span> -framework QGLViewer&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;qt include&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;QT +<span class="o">=</span> xml opengl&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Input&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;HEADERS +<span class="o">=</span> CControlPanel.h <span class="se">\</span>
+</span><span class='line'>           CMainWindow.h <span class="se">\</span>
+</span><span class='line'>           CMesh.h <span class="se">\</span>
+</span><span class='line'>           CMeshViewer.h <span class="se">\</span>
+</span><span class='line'>           Define.h <span class="se">\</span>
+</span><span class='line'>           IncludeLib.h <span class="se">\</span>
+</span><span class='line'>           MeshIO.h <span class="se">\</span>
+</span><span class='line'>           OpenGLUtil.h
+</span><span class='line'>FORMS +<span class="o">=</span> CMainWindow.ui
+</span><span class='line'>SOURCES +<span class="o">=</span> CControlPanel.cpp <span class="se">\</span>
+</span><span class='line'>           CMainWindow.cpp <span class="se">\</span>
+</span><span class='line'>           CMesh.cpp <span class="se">\</span>
+</span><span class='line'>           CMeshViewer.cpp <span class="se">\</span>
+</span><span class='line'>           main.cpp <span class="se">\</span>
+</span><span class='line'>           MeshIO.cpp <span class="se">\</span>
+</span><span class='line'>           OpenGLUtil.cpp&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;CONFIG +<span class="o">=</span> console
+</span><span class='line'>CONFIG -<span class="o">=</span> app_bundle
+</span><span class='line'>CONFIG +<span class="o">=</span> x86_64
+</span><span class='line'>CONFIG -<span class="o">=</span> i386&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;compiler setting&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;QMAKE_CC <span class="o">=</span> gcc
+</span><span class='line'><span class="nv">QMAKE_CXX</span> <span class="o">=</span> g++&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;QMAKE_CFLAGS_X86_64 +<span class="o">=</span> -mmacosx-version-min<span class="o">=</span>10.7
+</span><span class='line'><span class="nv">QMAKE_CXXFLAGS_X86_64</span> <span class="o">=</span> <span class="nv">$$</span>QMAKE_CFLAGS_X86_64&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;libQGLviewer setting&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;QGLVIEWER_STATIC <span class="o">=</span> yes
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>接著再用此.pro檔產生Makefile<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qmake projectname.pro  #change to your project name  &lt;br/></span></code></pre></td></tr></table></div></figure></p>
+
+<p>產生Makefile後就可以開始make來編譯程式了，若順利編譯成功則會產生一個執行檔，執行時可能會發生找不到QGLViewer framework的狀況，還須將此建立一個symbolic link到/Library/Frameworks裡：<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo ln -s /usr/local/Cellar/libqglviewer/2.3.17/QGLViewer.framework /Library/Frameworks/QGLViewer.framework  &lt;br/&gt;
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>如此即可成功執行，也可使用各種文字編輯器撰寫相容於CGAL, Qt, QGLViewer library之相關程式了。</p>
+
+<h3>References :</h3>
+
+<p><a href="http://www.informit.com/articles/article.aspx?p=1405563&amp;seqNum=2">http://www.informit.com/articles/article.aspx?p=1405563&amp;seqNum=2</a><br/>
+<a href="http://bitdewy.github.io/blog/2012/12/09/qt-xcode-hello/">http://bitdewy.github.io/blog/2012/12/09/qt-xcode-hello/</a>
+<a href="http://www.libqglviewer.com/compilation.html">http://www.libqglviewer.com/compilation.html</a><br/>
+<a href="http://stackoverflow.com/questions/4900230/help-getting-started-with-qt">http://stackoverflow.com/questions/4900230/help-getting-started-with-qt</a><br/>
+<a href="https://cours.etsmtl.ca/log750/share/simpleViewer.pro">https://cours.etsmtl.ca/log750/share/simpleViewer.pro</a></p>
+]]></content>
+  </entry>
+  
+</feed>

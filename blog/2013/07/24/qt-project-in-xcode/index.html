@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Qt 4.8.4 Project Created With Qmake Fail to Open in Xcode - andikan</title>
+  <meta name="author" content="Han-Chih Kuo">
+
+  
+  <meta name="description" content="承先前一篇CGAL, Qt 在 Mac OS X 安裝編譯與執行，當用qmake新開一個Qt xcode project時，這個project卻無法用xcode開啟，最後發現這時候需要修改 project_name/project_name.xcodeproj/project.pbxproj &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http:///blog/2013/07/24/qt-project-in-xcode/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="andikan" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35006459-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  <meta http-equiv="refresh" content="0; url=http://blog.andikan.me/2013/07/24/qt-project-in-xcode/" />
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">andikan</a></h1>
+  
+    <h2>andikan.blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Qt 4.8.4 Project Created With Qmake Fail to Open in Xcode</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-07-24T09:36:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:36 am</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>承先前一篇<a href="/blog/2013/04/13/cgal-on-macos-x/">CGAL, Qt 在 Mac OS X 安裝編譯與執行</a>，當用qmake新開一個Qt xcode project時，這個project卻無法用xcode開啟，最後發現這時候需要修改 project_name/project_name.xcodeproj/project.pbxproj 檔案的設定。</p>
+
+<!--more-->
+
+
+<p>整個流程從開啟一個project資料夾開始，先mkdir project_name後再把.h, .cpp檔案放入或新增入資料夾中，接著在project_name dir裡以  <br/>
+<code>qmake -project</code> 來建立project_name.pro<br/>
+<code>qmake -spec macx-g++</code> 來建立Mac環境下的Makefile<br/>
+<code>qmake -spec macx-xcode</code> 生成project_name.xcodeproj資料夾<br/>
+接著就是修改project_name.xcode裡面的project.pbxproj檔案，將<br/>
+<code>isa = PBXFrameworkReference;</code>修改為<br/>
+<code>lastKnownFileType = wrapper.framework;</code><br/>
+<code>isa = PBXFileReference;</code><br/>
+如此一來即可點擊project_name.xcodeproj順利在xcode開啟此project。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Han-Chih Kuo</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-07-24T09:36:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:36 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/qt/'>qt</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http:///blog/2013/07/24/qt-project-in-xcode/" data-via="andikankuo" data-counturl="http:///blog/2013/07/24/qt-project-in-xcode/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/05/17/judgment-and-decision/" title="Previous Post: What can bring me down">&laquo; What can bring me down</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/24/qt-project-in-xcode/">Qt 4.8.4 Project Created With Qmake Fail to Open in Xcode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/17/judgment-and-decision/">What Can Bring Me Down</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/08/bower-from-twitter/">Bower - a Package Manager for Web</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/cgal-on-macos-x/">CGAL, Qt 在 Mac OS X 安裝編譯與執行</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/30/data-uri/">將瀏覽器變成記事本</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/andikan">@andikan</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'andikan',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/andikan?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/andikan">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Han-Chih Kuo -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'andikanblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http:///blog/2013/07/24/qt-project-in-xcode/';
+        var disqus_url = 'http:///blog/2013/07/24/qt-project-in-xcode/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

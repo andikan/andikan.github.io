@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Nodejs | andikan]]></title>
+  <link href="http:///blog/categories/nodejs/atom.xml" rel="self"/>
+  <link href="http:///"/>
+  <updated>2015-12-25T18:33:13+08:00</updated>
+  <id>http:///</id>
+  <author>
+    <name><![CDATA[Han-Chih Kuo]]></name>
+    <email><![CDATA[andikan.io@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cookies 和 Session 的神秘關係]]></title>
+    <link href="http:///blog/2012/10/03/cookie-and-session/"/>
+    <updated>2012-10-03T11:55:00+08:00</updated>
+    <id>http:///blog/2012/10/03/cookie-and-session</id>
+    <content type="html"><![CDATA[<p>由於HTTP協定中stateless的性質，當每一次client在對Server發送request時，前後的要求並不會互相影響，server並不會紀錄之前的狀態，也因此可以使用較少的系統資源來服務較多的client，而要讓server記住client的行為與資料時，就需要cookies與session的協助。</p>
+
+<h3>cookies</h3>
+
+<p>當server想要儲存使用者的某些狀態時，就可以發送cookie給client，cookie是http header裡面其中一個欄位，cookie裡的資料以key/value的形式儲存，cookies通常儲存在client的瀏覽器中，也因此若當cookie並沒有加密時，在傳送的過程中容易被攔截或盜取，故並不鼓勵以cookie儲存一些敏感的資料，除了加密之外，更要設定時間在不需要cookie的時候將它刪除。<br/>
+每個cookies的檔案最大只能到4k，在使用者瀏覽網站的時候瀏覽器會將cookie儲存在記憶體中，當瀏覽器關閉時，尚未expire的cookies會被存進文字檔中，並等待下次連線使用。</p>
+
+<!--more-->
+
+
+<h3>session</h3>
+
+<p>相對於cookies處存在client端，session則是儲存在server端，session也需要cookie的輔助才能產生運作，因為server會傳送存有session id的cookie給client，並在server端建立起這個session id的檔案，在之後client在瀏覽網頁時都會夾帶此session id，如此一來server即可從此session id來辨認每個使用者所儲存的狀態與data。相對於cookies，session多用來儲存敏感的資料，也常常成為攻擊的目標，如<a href="http://knowledge.twisc.ntust.edu.tw/doku.php?id=3%E4%BC%BA%E6%9C%8D%E7%AB%AF%E5%AE%89%E5%85%A8:3-2%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%BC%B1%E9%BB%9E:Session%20hijacking">session hijacking</a>。</p>
+
+<h3>session in node.js</h3>
+
+<p>在<a href="https://npmjs.org/">npm</a>中有許多與session相關的module，而在express中是使用connect middleware來實現session功能，預設是儲存在記憶體中，當網站規模變大時，變需要透過資料庫作儲存，如<a href="https://github.com/visionmedia/connect-redis">redis</a>、<a href="https://github.com/masylum/connect-mongodb">mongoDB</a>、<a href="https://github.com/tdebarochez/connect-couchdb">couchDB</a>等等，在這裡簡單介紹express中session的使用方式。</p>
+
+<p>在app.js中必須有這兩行的設定：
+<figure class='code'><figcaption><span>app.js </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// in the app.configure</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">cookieParser</span><span class="p">());</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">session</span><span class="p">({</span> <span class="nx">secret</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">andikan</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;});</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>這樣的設定可以直接在指令產生express app時加上&ndash;session or -s 作設定。<br/>
+接著就可以使用session了！例如：
+<figure class='code'><figcaption><span>create and read session </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">andy</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;;</span>  <span class="c1">// set a session {name:&amp;lsquo;andy&amp;rsquo;}</span>
+</span><span class='line'><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">maxAge</span> <span class="o">=</span> <span class="mi">3600000</span><span class="p">;</span> <span class="c1">// set the session expire after an hour.</span>
+</span><span class='line'><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>  <span class="c1">// destroys the session and re-generated next request.</span>
+</span></code></pre></td></tr></table></div></figure> <br/>
+document可參閱<a href="http://www.senchalabs.org/connect/middleware-session.html">connect session</a></p>
+
+<h4>reference</h4>
+
+<p><a href="http://www.jollen.org/php/216_session_cookies/">Jollen&rsquo;s PHP</a><br/>
+<a href="http://knowledge.twisc.ntust.edu.tw/doku.php?id=3%E4%BC%BA%E6%9C%8D%E7%AB%AF%E5%AE%89%E5%85%A8:3-1%E4%BC%BA%E6%9C%8D%E5%99%A8%E7%AE%A1%E7%90%86:session%E5%92%8Ccookie%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%B8%B6%E4%BE%86%E7%9A%84web%E9%A2%A8%E9%9A%AA">TWISC@NTUST網路應用安全知識庫</a><br/>
+<a href="http://fred-zone.blogspot.tw/2011/11/nodejs-express-cookie-based-session.html">Fred&rsquo;s blog</a><br/>
+<a href="http://blog.hinablue.me/entry/nodejs-first-look-part-2">HINA blog</a><br/>
+<a href="http://www.hacksparrow.com/sessions-in-express-js-node-js-web-framework.html">hack sparrow</a><br/>
+<a href="http://blog.nodejitsu.com/sessions-and-cookies-in-node">nodejitsu</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[node.js Template Engine]]></title>
+    <link href="http:///blog/2012/09/26/nodejs-template-engine/"/>
+    <updated>2012-09-26T23:56:00+08:00</updated>
+    <id>http:///blog/2012/09/26/nodejs-template-engine</id>
+    <content type="html"><![CDATA[<p>幾乎每一種程式語言都有各自的template engine，可以讓變數快速產生在web page上，<br/>
+各個語言的的template engine與比較可點閱：<a href="http://goo.gl/ywsLx">wiki-Template engine(web)</a></p>
+
+<!--more-->
+
+
+<p></p>
+
+<p>而在node.js中也有許多template engine可以選擇：<a href="https://github.com/joyent/node/wiki/modules#wiki-templating" title="node.js template engine">node.js template engine</a><br/>
+其中express也支援許多template engine，像是：<br/>
+* haml.js : implementation of Haml, Haml多用於ruby on rails<br/>
+* Jade : 屬於 express default template engine，haml.js的後繼者<br/>
+* ejs : Embedded Javascript, 與 Rails 預設的 Embedded Ruby(erb) 十分相似<br/>
+* Blade : inspired by Jade &amp; Haml<br/>
+* Swig : inspired by Django, Jinja, and Twig，適合python Django的開發者<br/>
+* TwigJS : 從PHP的template engine Twig沿生而來</p>
+
+<p>選擇一個自己喜歡的template engine可以加速開發的速度，本身對於 Jade 簡潔的語法還不太適應，所以較常使用 ejs，因為與 erb 很像很容易熟悉與上手，用  Jade 少打 end tag 感覺怪怪的～</p>
+
+<h3>References</h3>
+
+<p><a href="http://www.quora.com/What-is-the-best-node-js-template-engine">quora.com</a><br/>
+<a href="http://www.csser.com/board/4f3f516e38a5ebc978000504">csser.com</a><br/>
+<a href="http://stackoverflow.com/questions/1787716/is-there-a-template-engine-for-node-js">stackoverflow.com</a><br/>
+<a href="http://ihower.tw/rails3/actionview.html">ihower.tw</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在 Ubuntu 12.04 安裝 node.js]]></title>
+    <link href="http:///blog/2012/09/24/nodejs-environment-setup/"/>
+    <updated>2012-09-24T01:50:00+08:00</updated>
+    <id>http:///blog/2012/09/24/nodejs-environment-setup</id>
+    <content type="html"><![CDATA[<p>使用 nvm(Node Version Manage) 來安裝 node.js,<br/>
+預先需要 curl, git, g++ :<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install git-core g++ curl</span></code></pre></td></tr></table></div></figure> <br/>
+接著即可用以下指令安裝 :<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git://github.com/creationix/nvm.git ~/.nvm
+</span><span class='line'>$ echo &ldquo;. ~/.nvm/nvm.sh&rdquo; >> ~/.bashrc</span></code></pre></td></tr></table></div></figure></p>
+
+<!--more-->
+
+
+<p>
+重新開啟 terminal 或是打<code>source ~/.bashrc</code>或<code>. ~/.bashrc</code> 載入新的bashrc設定到目前bash環境中, 接著 :<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ nvm install v0.8.9 # install current version, take some time
+</span><span class='line'>$ nvm alias default v0.8.9 # set default node version
+</span><span class='line'>$ node -v # verify</span></code></pre></td></tr></table></div></figure></p>
+
+<p>node.js 在 0.6.3 之後的版本開始內建 npm (Node Package Management),  <br/>
+可用 npm -v 作確認</p>
+
+<p>更多 node.js resource 可點閱 ： <a href="http://www.nodecloud.org/" title="NodeCloud">NodeCloud</a><br/>
+npm rank ： <a href="http://eirikb.github.com/nipster/" title="Nipster">Nipster</a></p>
+]]></content>
+  </entry>
+  
+</feed>

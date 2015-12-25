@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Qt | andikan]]></title>
+  <link href="http:///blog/categories/qt/atom.xml" rel="self"/>
+  <link href="http:///"/>
+  <updated>2015-12-25T18:33:13+08:00</updated>
+  <id>http:///</id>
+  <author>
+    <name><![CDATA[Han-Chih Kuo]]></name>
+    <email><![CDATA[andikan.io@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Qt 4.8.4 Project Created With Qmake Fail to Open in Xcode]]></title>
+    <link href="http:///blog/2013/07/24/qt-project-in-xcode/"/>
+    <updated>2013-07-24T09:36:00+08:00</updated>
+    <id>http:///blog/2013/07/24/qt-project-in-xcode</id>
+    <content type="html"><![CDATA[<p>承先前一篇<a href="/blog/2013/04/13/cgal-on-macos-x/">CGAL, Qt 在 Mac OS X 安裝編譯與執行</a>，當用qmake新開一個Qt xcode project時，這個project卻無法用xcode開啟，最後發現這時候需要修改 project_name/project_name.xcodeproj/project.pbxproj 檔案的設定。</p>
+
+<!--more-->
+
+
+<p>整個流程從開啟一個project資料夾開始，先mkdir project_name後再把.h, .cpp檔案放入或新增入資料夾中，接著在project_name dir裡以  <br/>
+<code>qmake -project</code> 來建立project_name.pro<br/>
+<code>qmake -spec macx-g++</code> 來建立Mac環境下的Makefile<br/>
+<code>qmake -spec macx-xcode</code> 生成project_name.xcodeproj資料夾<br/>
+接著就是修改project_name.xcode裡面的project.pbxproj檔案，將<br/>
+<code>isa = PBXFrameworkReference;</code>修改為<br/>
+<code>lastKnownFileType = wrapper.framework;</code><br/>
+<code>isa = PBXFileReference;</code><br/>
+如此一來即可點擊project_name.xcodeproj順利在xcode開啟此project。</p>
+]]></content>
+  </entry>
+  
+</feed>

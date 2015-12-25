@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: R | andikan]]></title>
+  <link href="http:///blog/categories/r/atom.xml" rel="self"/>
+  <link href="http:///"/>
+  <updated>2015-12-25T18:33:13+08:00</updated>
+  <id>http:///</id>
+  <author>
+    <name><![CDATA[Han-Chih Kuo]]></name>
+    <email><![CDATA[andikan.io@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[在 Ubuntu 安裝 R]]></title>
+    <link href="http:///blog/2012/11/12/install-r-in-ubuntu/"/>
+    <updated>2012-11-12T06:03:00+08:00</updated>
+    <id>http:///blog/2012/11/12/install-r-in-ubuntu</id>
+    <content type="html"><![CDATA[<p>在 Ubuntu 環境下安裝 R 只需要一行指令</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install r-base  # or
+</span><span class='line'>$ sudo apt-get install r-recommended</span></code></pre></td></tr></table></div></figure></p>
+
+<p>等待安裝完畢後即可按 R 來進入互動命令列進行簡單的操作。</p>
+]]></content>
+  </entry>
+  
+</feed>

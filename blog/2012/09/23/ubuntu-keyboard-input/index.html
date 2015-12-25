@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ubuntu英文介面下的中文輸入(ibus) - andikan</title>
+  <meta name="author" content="Han-Chih Kuo">
+
+  
+  <meta name="description" content="在 Ubuntu 12.04 下，當使用英文介面時，需要中文輸入時的一些設定,
+進入system setting -> Language Support 中,
+在 Keyboard Input method system 選擇 ibus,
+右上角中即會產生一個鍵盤的小icon, &hellip;&#8221;>
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http:///blog/2012/09/23/ubuntu-keyboard-input/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="andikan" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35006459-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  <meta http-equiv="refresh" content="0; url=http://blog.andikan.me/2012/09/23/ubuntu-keyboard-input/" />
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">andikan</a></h1>
+  
+    <h2>andikan.blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ubuntu英文介面下的中文輸入(ibus)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-09-23T22:06:00+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>10:06 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>在 Ubuntu 12.04 下，當使用英文介面時，需要中文輸入時的一些設定,<br/>
+進入system setting -> Language Support 中,<br/>
+在 Keyboard Input method system 選擇 ibus,<br/>
+右上角中即會產生一個鍵盤的小icon, 點下這個icon後選preferences,<br/>
+在Input Method 中勾選 Customize active input methods, 可以點add加入需要的中文輸入法(如新酷音),<br/>
+切換成ibus的input method 預設快速鍵 是Ctrl + space,<br/>
+當右上方沒有出現小鍵盤的icon時, 可下command來重新啟動ibus :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ibus-daemon -x -r -d</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<h3>Sublime-text 中文輸入問題</h3>
+
+<p>在 ubuntu 的 sublime-text 中無法直接使用ibus作中文輸入,
+需要其他 plugin 來作輔助, 目前找到的方法是<a href="https://github.com/xgenvn/InputHelper" title="InputHelper">InputHelper</a>
+, 安裝這個 plugin :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/.config/sublime-text-2/Packages
+</span><span class='line'>git clone https://github.com/xgenvn/InputHelper.git</span></code></pre></td></tr></table></div></figure>
+
+
+<p>很大的缺點在於輸入中文時需要先按 Ctrl+Shift+Z, 會跳出一個視窗來作輸入,<br/>
+希望可以找到其他更方便的sublime-text in Ubuntu 中文輸入解決方法 ~</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Han-Chih Kuo</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-09-23T22:06:00+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>10:06 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http:///blog/2012/09/23/ubuntu-keyboard-input/" data-via="andikankuo" data-counturl="http:///blog/2012/09/23/ubuntu-keyboard-input/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/09/22/the-first-post/" title="Previous Post: 第一篇文章">&laquo; 第一篇文章</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/09/24/nodejs-environment-setup/" title="Next Post: 在 Ubuntu 12.04 安裝 node.js">在 Ubuntu 12.04 安裝 node.js &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/24/qt-project-in-xcode/">Qt 4.8.4 Project Created With Qmake Fail to Open in Xcode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/17/judgment-and-decision/">What Can Bring Me Down</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/08/bower-from-twitter/">Bower - a Package Manager for Web</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/cgal-on-macos-x/">CGAL, Qt 在 Mac OS X 安裝編譯與執行</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/30/data-uri/">將瀏覽器變成記事本</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/andikan">@andikan</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'andikan',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/andikan?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/andikan">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Han-Chih Kuo -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'andikanblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http:///blog/2012/09/23/ubuntu-keyboard-input/';
+        var disqus_url = 'http:///blog/2012/09/23/ubuntu-keyboard-input/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

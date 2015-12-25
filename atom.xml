@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[andikan]]></title>
+  <link href="http:///atom.xml" rel="self"/>
+  <link href="http:///"/>
+  <updated>2015-12-25T18:33:13+08:00</updated>
+  <id>http:///</id>
+  <author>
+    <name><![CDATA[Han-Chih Kuo]]></name>
+    <email><![CDATA[andikan.io@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Qt 4.8.4 Project Created With Qmake Fail to Open in Xcode]]></title>
+    <link href="http:///blog/2013/07/24/qt-project-in-xcode/"/>
+    <updated>2013-07-24T09:36:00+08:00</updated>
+    <id>http:///blog/2013/07/24/qt-project-in-xcode</id>
+    <content type="html"><![CDATA[<p>承先前一篇<a href="http:///blog/2013/04/13/cgal-on-macos-x/">CGAL, Qt 在 Mac OS X 安裝編譯與執行</a>，當用qmake新開一個Qt xcode project時，這個project卻無法用xcode開啟，最後發現這時候需要修改 project_name/project_name.xcodeproj/project.pbxproj 檔案的設定。</p>
+
+<!--more-->
+
+
+<p>整個流程從開啟一個project資料夾開始，先mkdir project_name後再把.h, .cpp檔案放入或新增入資料夾中，接著在project_name dir裡以  <br/>
+<code>qmake -project</code> 來建立project_name.pro<br/>
+<code>qmake -spec macx-g++</code> 來建立Mac環境下的Makefile<br/>
+<code>qmake -spec macx-xcode</code> 生成project_name.xcodeproj資料夾<br/>
+接著就是修改project_name.xcode裡面的project.pbxproj檔案，將<br/>
+<code>isa = PBXFrameworkReference;</code>修改為<br/>
+<code>lastKnownFileType = wrapper.framework;</code><br/>
+<code>isa = PBXFileReference;</code><br/>
+如此一來即可點擊project_name.xcodeproj順利在xcode開啟此project。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What Can Bring Me Down]]></title>
+    <link href="http:///blog/2013/05/17/judgment-and-decision/"/>
+    <updated>2013-05-17T19:11:11+08:00</updated>
+    <id>http:///blog/2013/05/17/judgment-and-decision</id>
+    <content type="html"><![CDATA[<p>把事情做好，讓別人好做事，選擇做好事</p>
+
+<p>有時候會突然發現自己不知道自己想做什麼，有時候知道自己想做什麼卻不知道該怎麼做，有時知道該怎麼做卻不等於會做的好，每一種狀態下都讓人感到迷惘，感到畏懼而變得猶豫、徘徊，漸漸變得失落而沒有動力，一旦腦袋變得混亂不清就無法沉著失去專注力，時間就毫不保留的快速流失。挫折的恢復能力讓我們能夠把危機化成轉機，能在跌倒後重新站起來，面對絕望與低潮時最害怕一蹶不振，長時間的憂鬱會帶來更多負面的情緒與行為，長時間的漫無目的更會產生更多悲觀的想法，<a href="http://www.theverge.com/2013/5/15/4334242/larry-page-to-tech-world-being-negative-is-not-how-we-make-progress">&ldquo;Being negative is not how we make progress&rdquo;</a>，多一點樂觀能帶來更多正面的情緒和動力迎接挑戰和難題。</p>
+
+<!--more-->
+
+
+<p>在學校裡的考試或作業訓練我們在時限內處理好附有標準答案的問題，或是各種具有評分標準的問題與任務，但在未來所面對的不確定性和劇烈變化的環境下，我們如何用有限的資源與資訊做出判斷，而這樣的選擇所產生的結果沒有對或錯，不再是非黑即白的解題邏輯，在灰色地帶中讓我們混亂，更要冷靜判斷每個選擇的好與壞，來訓練自己的思考模式，學習隨機應變，面對未知，接受風險。</p>
+
+<p>二十幾歲就好比一架剛起飛的飛機，剛起飛時只要一點點角度的修正，就會大大改變最後的目的地，一旦飛行了一半途中才改變目標，便要花更多時間和燃料繞一大圈，未來幾年的一些些變化都會改變三十歲後的自己，我們在高空上飛行，可能遇到亂流、暴雨，可能是天晴、風平浪靜，不管情況如何，握著方向盤的手，小小的改變便可能前進的更快更遠，了解風向更能讓我們在有限的燃料內走得更遠，做與沒做的事都會影響到未來所發生的事情，在我們腦袋中，知道與不知道一件事的差別在考試中或許只有分數上的不同，但在生活中、生命中卻有可能產生兩條互不相交的路途。最近一直想著如果每一件事都能以1.1倍的速度完成，我們所獲得更多的時間會對人生有什麼巨大的改變，若每一件事情所花時間縮短變小為0.9倍，速度反而變成1.1111倍，這樣的加速而產生的節省時間的累積是否會不斷影響各種事情的發生，產生一條和現在不同的人生旅途。</p>
+
+<p>In a use-it-or-lose-it fashion, the new frontal lobe connections we use are preserved and quickened; those we don’t use just waste away through pruning. We become what we hear and see and do every day. We don’t become what we don’t hear and see and do every day. In neuroscience, this is known as “survival of the busiest.”<br/>
+在神經學中，我們常用到的神經連結就會保留下來，而沒有用到的那些就會修剪淘汰，這種現象稱為&#8221;survival of the busiest&#8221;，每一天所經歷的事情，所聽到看到做到的事情都會塑造我們，二十幾歲會進入第二次大腦成長的期間，這個期間所心成長的神經連結大多集中在額葉，是為了未來成年生活的不確定性做準備，大多的功能是為了調適情緒、學習社交互動、感情生活、做出複雜的決策，更有一塊即是面對挫折的復原力，在面對各種挫折和壓力時能夠在檢討反思後繼續樂觀努力生活，這段時間不斷開拓使用腦袋，能讓大腦留下更多神經連結，加速未來一輩子的學習速度和方式，讓腦袋適應不確定性，習慣壓力，習慣在不確定時用屬於自己組織性的思考邏輯做出選擇，減少未知帶來的恐懼，在束手無策時更必須知道該做什麼。</p>
+
+<p>Reference:<br/>
+<a href="http://www.amazon.com/The-Defining-Decade-Twenties-Matter-And/dp/0446561762">The Defining Decade: Why Your Twenties Matter And How to Make the Most of Them Now</a><br/>
+<a href="http://www.books.com.tw/exep/prod/booksfile.php?item=0010563133">20世代，你的人生是不是卡住了</a> (by Meg Jay)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bower - a Package Manager for Web]]></title>
+    <link href="http:///blog/2013/05/08/bower-from-twitter/"/>
+    <updated>2013-05-08T09:21:40+08:00</updated>
+    <id>http:///blog/2013/05/08/bower-from-twitter</id>
+    <content type="html"><![CDATA[<p><img src="http://farm8.staticflickr.com/7368/8717219451_ff5da4959c_z.jpg" title="Bower twitter" alt="Bower twitter" /></p>
+
+<p><a href="https://github.com/bower/bower">Bower</a>是一個來自twitter用來管理網站套件的工具，一個front-end的套件管理工具，用來方便管理專案中各種前端所需要的javascript librarys, frameworks, 和 modules，也包含許多html/css等assets，有近兩千種components在其上，使用起來相當方便，在include第三方package時不再需要一個個下載，可直接寫好packages相依性即可快速安裝各種js檔案進入專案資料夾中。</p>
+
+<!--more-->
+
+
+<p></p>
+
+<p>首先就是先安裝bower，透過npm快速安裝(installed bower globally)：<br/>
+<code>npm install bower -g</code></p>
+
+<p>接著可以在家目錄或是project目錄下建立一個.bowerrc的設定檔，這個設定檔用來控制預設安裝的路徑與搜尋路徑等等，以JSON格式撰寫：</p>
+
+<figure class='code'><figcaption><span>An example .bowerrc </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;directory&quot;</span><span class="o">:</span> <span class="s2">&quot;javascripts/components&quot;</span><span class="p">,</span>           <span class="c1">// 預設安裝路徑資料夾</span>
+</span><span class='line'>  <span class="s2">&quot;endpoint&quot;</span><span class="o">:</span> <span class="s2">&quot;https://bower.mycompany.com&quot;</span><span class="p">,</span>       <span class="c1">// 指定bower server，預設為bower官方server</span>
+</span><span class='line'>  <span class="s2">&quot;json&quot;</span><span class="o">:</span> <span class="s2">&quot;bower.json&quot;</span><span class="p">,</span>                            <span class="c1">// 設定各個專案的bower設定檔案名稱</span>
+</span><span class='line'>  <span class="s2">&quot;searchpath&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;https://bower.herokuapp.com&quot;</span> <span class="p">],</span> <span class="c1">// 用來指定搜尋路徑，首要會先從endpoint開始搜尋，接著到searchpath依次搜尋</span>
+</span><span class='line'>  <span class="s2">&quot;shorthand_resolver&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>                         <span class="c1">// 定義package的縮寫格式</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+<a href="https://github.com/bower/bower-server">一個簡單的bower server</a></p>
+
+<p>在進入專案資料夾後即可快速開起bower設定檔，預設為bower.json，如同node.js中的<code>package.json</code>或ruby的<code>Gemfile</code>角色，只是管理的內容不同：<code>bower init</code></p>
+
+<p>在bower.json的package設定上也很容易：</p>
+
+<figure class='code'><figcaption><span>An example .bowerrc </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;project-name&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;dependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;&lt;name&gt;&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;version&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;&lt;name&gt;&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;folder&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;&lt;name&gt;&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;package&gt;&quot;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+依照這樣的方式把自己需要的packages一個個條列出來，在按下：<code>bower install</code><br/>
+即可將bower.json中所有相依的packages一次通通下載入.bawerrc中設定的預設資料夾中，使用起來和package.json十分相似。</p>
+
+<p>另外bower當然也提供互動式指令，如：<br/>
+<code>bower search [&lt;name&gt;]</code><br/>
+<code>bower list</code><br/>
+<code>bower install [&lt;name&gt;]</code><br/>
+<code>bower install [&lt;name&gt;]  --save</code>  // 安裝後直接加入到bower.json中的dependencies裡。<br/>
+<code>bower uninstall &lt;name&gt;</code></p>
+
+<p>也可將自己所寫的package快速註冊到bower server中：<br/>
+<code>bower register &lt;my-package-name&gt; &lt;git-endpoint&gt;</code></p>
+
+<p><a href="https://github.com/bower/bower">Bower</a>使用上真的很直覺也和node.js中的npm類似，十分親近且實用的前端套件管理系統，<br/>
+也可在這個網站<a href="http://sindresorhus.com/bower-components/">Bower components</a>搜尋bower所成列的packages。</p>
+
+<p>References：<br/>
+<a href="http://bower.io/">http://bower.io/</a><br/>
+<a href="http://net.tutsplus.com/tutorials/tools-and-tips/meet-bower-a-package-manager-for-the-web/">http://net.tutsplus.com/tutorials/tools-and-tips/meet-bower-a-package-manager-for-the-web/</a><br/>
+<a href="http://sindresorhus.com/bower-components/">http://sindresorhus.com/bower-components/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CGAL, Qt 在 Mac OS X 安裝編譯與執行]]></title>
+    <link href="http:///blog/2013/04/13/cgal-on-macos-x/"/>
+    <updated>2013-04-13T10:00:07+08:00</updated>
+    <id>http:///blog/2013/04/13/cgal-on-macos-x</id>
+    <content type="html"><![CDATA[<p>這個月買了新電腦，希望將Geometric Modeling課程中的作業轉移到MacOS X上編譯執行，助教和網路上許多教學文都是Windows下用Visual Studio之相關安裝流程，故在轉移上遇到許多問題，但在最後不斷嘗試的結果下終於可以編譯並執行，過程中許多設定還有地方和細節不明就裡，但在此做一個簡短的記錄，go！</p>
+
+<!--more-->
+
+
+<p>剛開始希望能直接使用Xcode作為IDE，並先裝了Xcode，之後再從Xcode中的Preferences -> Downloads 點選下載Command line Tools來安裝編譯器和指令工具如LLVM、Make，再以Homebrew做為套件管理工具來簡化之後安裝流程，以一行指令即可安裝Homebrew：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Homebrew可以用來安裝許多套件與程式，透過ruby所寫的formula簡化安裝流程，不用再從每個套件的官方網站下載編譯，接下來就可以用它來一個一個安裝所需要的library與framework了。</p>
+
+<ul>
+<li>Boost C++ Libraries
+直接以</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install boost
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+即可安裝至 /usr/local/Cellar資料夾底下，Homebrew會建立一個Cellar(酒窖)的資料夾來放置一個個套件(bottle)，移除也相當容易，只要：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew uninstall formula
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+就可以快速的移除不需要的套件，更多formula可以從<a href="https://github.com/mxcl/homebrew/tree/master/Library/Formula">https://github.com/mxcl/homebrew/tree/master/Library/Formula</a> 尋找，或是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew search formula
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+來尋找需要的套件。</p>
+
+<ul>
+<li>libQGLViewer C++ library, Qt<br/>
+接著安裝3D視覺化相關library，因為此library相依於Qt，故在</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install libqglviewer
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+過程中就會安裝好Qt與Qt相依的套件，所有套件都會在同一個/usr/local/Cellar資料夾下。</p>
+
+<ul>
+<li>Cmake    <br/>
+cross platform make，在安裝CGAL時需用cmake來build。</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install cmake
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<ul>
+<li>CGAL    <br/>
+Computational Geometry Algorithms Library</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install cgal --imaging
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+安裝時需加上&ndash;imaging選項來增加此library對Qt的支援。</p>
+
+<p>接下來便可以開始一個Qt project了，先開一個資料夾並把撰寫好的.cpp, .h放進去，先將課程assignment的skeleton code放入此資料夾中，並cd至此資料夾，接著：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qmake -project</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+來產生一個.pro的設定檔，這個設定檔將用來產生Makefile。原本以為可以透過qmake -spec macx-xcode projectname.pro來產生Xcode project設定檔便可以在Xcode上編輯，但一直失敗，無法將專案從Xcode上開啟，但不能氣餒繼續嘗試，開始編輯.pro檔中的設定參數，以下為目前嘗試的設定方法：</p>
+
+<figure class='code'><figcaption><span>Here&#8217;s an example .pro file. </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">TEMPLATE</span> <span class="o">=</span> app
+</span><span class='line'><span class="nv">TARGET</span> <span class="o">=</span>
+</span><span class='line'>DEPENDPATH +<span class="o">=</span> .
+</span><span class='line'><span class="c"># include headers</span>
+</span><span class='line'>INCLUDEPATH +<span class="o">=</span> /usr/local/Cellar/cgal/4.1/include <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/gmp/5.1.1/include <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/boost/1.53.0/include <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/libqglviewer/2.3.17/QGLViewer.framework/Headers <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/qt/4.8.4/include
+</span><span class='line'><span class="c"># include libraries and framework</span>
+</span><span class='line'>LIBS +<span class="o">=</span> -L/usr/local/Cellar/cgal/4.1/lib <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/gmp/5.1.1/lib <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/boost/1.53.0/lib <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/libqglviewer/2.3.17/QGLViewer.framework/Headers <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/qt/4.8.4/lib
+</span><span class='line'>LIBS +<span class="o">=</span> -lssl -lcrypto
+</span><span class='line'>LIBS +<span class="o">=</span> -lCGAL
+</span><span class='line'>QMAKE_LFLAGS +<span class="o">=</span> -F/usr/local/Cellar/libqglviewer/2.3.17/
+</span><span class='line'>LIBS +<span class="o">=</span> -framework QGLViewer
+</span><span class='line'>
+</span><span class='line'><span class="c"># qt include</span>
+</span><span class='line'>QT +<span class="o">=</span> xml opengl
+</span><span class='line'>
+</span><span class='line'><span class="c"># Input</span>
+</span><span class='line'>HEADERS +<span class="o">=</span> CControlPanel.h <span class="se">\</span>
+</span><span class='line'>           CMainWindow.h <span class="se">\</span>
+</span><span class='line'>           CMesh.h <span class="se">\</span>
+</span><span class='line'>           CMeshViewer.h <span class="se">\</span>
+</span><span class='line'>           Define.h <span class="se">\</span>
+</span><span class='line'>           IncludeLib.h <span class="se">\</span>
+</span><span class='line'>           MeshIO.h <span class="se">\</span>
+</span><span class='line'>           OpenGLUtil.h
+</span><span class='line'>FORMS +<span class="o">=</span> CMainWindow.ui
+</span><span class='line'>SOURCES +<span class="o">=</span> CControlPanel.cpp <span class="se">\</span>
+</span><span class='line'>           CMainWindow.cpp <span class="se">\</span>
+</span><span class='line'>           CMesh.cpp <span class="se">\</span>
+</span><span class='line'>           CMeshViewer.cpp <span class="se">\</span>
+</span><span class='line'>           main.cpp <span class="se">\</span>
+</span><span class='line'>           MeshIO.cpp <span class="se">\</span>
+</span><span class='line'>           OpenGLUtil.cpp
+</span><span class='line'>
+</span><span class='line'>CONFIG +<span class="o">=</span> console
+</span><span class='line'>CONFIG -<span class="o">=</span> app_bundle
+</span><span class='line'>CONFIG +<span class="o">=</span> x86_64
+</span><span class='line'>CONFIG -<span class="o">=</span> i386
+</span><span class='line'>
+</span><span class='line'><span class="c"># compiler setting</span>
+</span><span class='line'><span class="nv">QMAKE_CC</span> <span class="o">=</span> gcc
+</span><span class='line'><span class="nv">QMAKE_CXX</span> <span class="o">=</span> g++
+</span><span class='line'>
+</span><span class='line'>QMAKE_CFLAGS_X86_64 +<span class="o">=</span> -mmacosx-version-min<span class="o">=</span>10.7
+</span><span class='line'><span class="nv">QMAKE_CXXFLAGS_X86_64</span> <span class="o">=</span> <span class="nv">$$</span>QMAKE_CFLAGS_X86_64
+</span><span class='line'>
+</span><span class='line'><span class="c"># libQGLviewer setting</span>
+</span><span class='line'><span class="nv">QGLVIEWER_STATIC</span> <span class="o">=</span> yes
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>接著再用此.pro檔產生Makefile</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qmake projectname.pro  #change to your project name</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>產生Makefile後就可以開始make來編譯程式了，若順利編譯成功則會產生一個執行檔，執行時可能會發生找不到QGLViewer framework的狀況，還須將此建立一個symbolic link到/Library/Frameworks裡：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo ln -s /usr/local/Cellar/libqglviewer/2.3.17/QGLViewer.framework /Library/Frameworks/QGLViewer.framework
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>如此即可成功執行，也可使用各種文字編輯器撰寫相容於CGAL, Qt, QGLViewer library之相關程式了。</p>
+
+<h3>References :</h3>
+
+<p><a href="http://www.informit.com/articles/article.aspx?p=1405563&amp;seqNum=2">http://www.informit.com/articles/article.aspx?p=1405563&amp;seqNum=2</a><br/>
+<a href="http://bitdewy.github.io/blog/2012/12/09/qt-xcode-hello/">http://bitdewy.github.io/blog/2012/12/09/qt-xcode-hello/</a>
+<a href="http://www.libqglviewer.com/compilation.html">http://www.libqglviewer.com/compilation.html</a><br/>
+<a href="http://stackoverflow.com/questions/4900230/help-getting-started-with-qt">http://stackoverflow.com/questions/4900230/help-getting-started-with-qt</a><br/>
+<a href="https://cours.etsmtl.ca/log750/share/simpleViewer.pro">https://cours.etsmtl.ca/log750/share/simpleViewer.pro</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[將瀏覽器變成記事本]]></title>
+    <link href="http:///blog/2013/01/30/data-uri/"/>
+    <updated>2013-01-30T04:16:00+08:00</updated>
+    <id>http:///blog/2013/01/30/data-uri</id>
+    <content type="html"><![CDATA[<p>在瀏覽器開啟新的分頁並在url tab中輸入 :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>data:text/html, <span class="nt">&lt;html</span> <span class="na">contenteditable</span><span class="nt">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+或改變字型 ：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>data:text/html, <span class="nt">&lt;html</span> <span class="na">contenteditable</span> <span class="na">style=</span><span class="s">&#39;font-family: monospace&#39;</span><span class="nt">&gt;</span>  <span class="c">&lt;!-- change font --&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+瀏覽器變成了可以輸入文字的記事本了！<br/>
+可以用來暫存一些資訊和文字。</p>
+
+<!--more-->
+
+
+<p></p>
+
+<p>這一行使用了 data URI scheme 的語法來讓瀏覽器知道此頁面編碼的方式，這樣的方法多用在當網頁有許多靜態檔案（img,css等）需要載入時，可以用這樣的方法減少 http 的 request，例如當有一個 &lt;img&gt; tag 時，瀏覽器會根據其 src 的值發出 request，若使用 data URI 將圖檔內容放置在此標籤的 src 中，可加入編碼格式如 base64 之編碼方式，這樣瀏覽器便會直接將此 img 標籤以此編碼方式將這個圖形顯示出來，並不會發出 request 來取得圖片。這樣的語法也有其他應用，例如可以將HTML &lt;table&gt; 標籤直接轉換成 csv 格式呈現在瀏覽器上讓使用者進行下載，如 ：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>&#39;data:text/csv;charset=utf-8,&#39; + encodeURIComponent(data);
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>這樣的瀏覽器筆記本方法都可已將它放置在書籤中，需要時可以馬上點開作使用，此外還有別人完成的類似 sublime text 2 外觀的版本 XD  並加入了 ruby 的 syntax highlighter ，超酷:</p>
+
+<div><script src='https://gist.github.com/4666256.js'></script>
+<noscript><pre><code>data:text/html, &lt;style type=&quot;text/css&quot;&gt;#e{position:absolute;top:0;right:0;bottom:0;left:0;}&lt;/style&gt;&lt;div id=&quot;e&quot;&gt;&lt;/div&gt;&lt;script src=&quot;http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;script&gt;var e=ace.edit(&quot;e&quot;);e.setTheme(&quot;ace/theme/monokai&quot;);e.getSession().setMode(&quot;ace/mode/ruby&quot;);&lt;/script&gt;</code></pre></noscript></div>
+
+
+<p>這樣 coding 也不用離開瀏覽器，可能未來寫好的各種語言的程式都只要用瀏覽器就可以直接compile+run了！</p>
+
+<p>來自 <a href="https://coderwall.com/p/lhsrcq">coderwall.com</a><br/>
+更多js bookmarklets :<a href="http://playpcesor.blogspot.com/2007/10/bookmarklets.html">playpcesor.blogspot.com/2007/10/bookmarklets.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RubyConf@Taiwan 2012 所見所聞]]></title>
+    <link href="http:///blog/2012/12/10/rubyconf-tw2012/"/>
+    <updated>2012-12-10T08:05:00+08:00</updated>
+    <id>http:///blog/2012/12/10/rubyconf-tw2012</id>
+    <content type="html"><![CDATA[<p>感謝ihower致力於創造台灣ruby社群，並花了五個月籌辦ruby年會，今年首次邀請到Matz(松本行弘)來到台灣擔任Keynote Speaker，身為一個ruby newbie中的newbie，半年來的學習中對於ruby的易讀性感到著迷，幸運的在10/18中午12:00開始販售門票後的八分鐘搶到一張了!但卻一直以為是在周末舉辦，活動前一天才看到提醒是從禮拜五開始，在閉幕的時候ihower說明了這次時程的安排是以Matz為主，因為他周末固定有家庭聚會需要返回日本，所以才會安排在五六兩日舉辦。這是第一次參加conference就有機會看到好多知名的前輩和眾神們，真的非常幸運 :3</p>
+
+<!--more-->
+
+
+<p>這次15個sessions和23個lightning talks中主要環繞在ruby2.0, mruby, concurrency, devOps, Rails的應用，由於與會聽眾與講者許多來自外國，大多來自於日本，故許多中文講者都自動換成英文演講了，也讓大部分的時間都處在英文聽力練習的狀態。Matz看起來還很年輕!他的一個小時演講十分有趣也激勵人心，也簡單介紹了ruby起始的原因，當他是一個programmer時他的project被cancel且團隊解散了，當時1993年他沒有事情可以做，開始創造一個他自己的程式語言，名字叫Ruby。</p>
+
+<blockquote><p>Replace Perl, but not at all. <br/>
+I just wanted to create my own language.</p></blockquote>
+
+<p>design programming language的人少之又少，而大部分的人都是語言的使用者，所以在程式語言設計者的腦中的想法與程式語言的使用與開發者迥然不同，他愛所有的程式語言，但他相信可以再造一個更好的。語言就好像介面一樣，在電腦與人之間溝通的方式，ruby是一個很好的DSL，也增加了ruby的可讀性與開發者的開發速度，語言也同時影響著人，讓更多人使用並讓這個語言變得更好。</p>
+
+<blockquote><p>Too few people care about design, too many people create software without care.</p>
+
+<p>So I suggest you care about the users,  care about your team members, care about yourself, care about future yourself.</p></blockquote>
+
+<p>Matz也介紹了mruby為Matz Embeddable Minimal Ruby，ruby也因mruby的發展進入各種裝置，mruby盡可能的瘦身來嵌入各種系統中，在jserv的sessions中也介紹了他在mruby中的研究，在嵌入式系統中mruby算是一個成長中的角色，jserv也因此選擇與mruby一同成長與努力，在<a href="http://www.acomotech.com/cht/">AcoMo</a>公司研發Physiological Inspection相關產品，透過compiler將ruby code轉成bytecode來間接執行ruby，也demo藉由電路板來以ruby透過USB實現滑鼠控制，並畫出圖形，在問答中提到因mruby目前所需空間較大且效能慢，還無法在Arduino上順暢運行。</p>
+
+<p>這次活動中也由許多日本講者介紹ruby2.0，除了Matz本身還有ruby core team的Ko1, Asakusa.rb的Akira，在Heroku中有Matz&rsquo;s team，團隊裡有Matz、Ko1和Nobu，三個人分別負責designing, implementing, fixing，由這樣的模式帶動ruby的成長，Akira也畫出了一個日期與ruby版本數的對應圖，從1993年到現在ruby版本彷彿趨近於2又佇立於現在的1.9.3，明年也將在ruby的誕生日2/24號也是ruby 20歲生日release ruby2.0，ruby將引領整個ecosystem全面性的改版，如Rails, Rake, RubyGems, RDoc, Rspec等等。</p>
+
+<p>其中一個議題為ruby的concurrency，由cardinal blue的godfat主講，在短短一小時將這個議題講述的十分透徹，也介紹了現今concurrency model，在實作上可能是用thread或reactor，還須考慮到這個task為IO bound或是CPU bound，在現有的ruby app server上如Thin, Puma, Unicorn等透過eventmachine與Thread Pool多種組合來產生不同的效能與功用，ruby concurrency的議題常常被拿來與近來流行的node.js做比較，ruby能以eventmachine做event-driven的non-blocking IO，但相關的其他library與module也須配合call back的特性才有效，但大多數的ruby code都以block的形式存在，不同於js先天上即是event-driven的特性。</p>
+
+<p>第二天下午的兩個議程與DevOps有關，自己第一次看見這個名詞，由字面上的意思來看是開發與營運，事實上還包含了佈署與QA測試等等的一連串軟體開發的流程，透過持續整合來提高開發品質、減少浪費與加速開發時程並維持穩定的營運。Richard的流利英文和易懂的投影片描述出一家startup公司如何藉由一些工具與技術來實現DevOps，其中一部分是Continuous Integration持續整合的方法，自動化整合code、測試、佈署與文件一連串的過程及需要一個CI server來實踐，Richard提到了<a href="https://github.com/github/janky">Janky</a>，一個以Jenkins為底，Hubot做控制的CI server，可以及時掌控專案的狀況。當營運時候server不小心down了就面臨了server provisioning的問題，Richard以<a href="http://www.opscode.com/chef/">chef</a>+<a href="https://github.com/mitchellh/vagrant">vargrant</a>做solution，而thegiive使用<a href="http://puppetlabs.com/">puppet</a>，這兩種方案都可以減少時間與人力來啟動新server繼續提供服務，對於服務的monitoring，Richard以unit test之於developer與monitoring之於operator做類比，強調monitoring的重要性，當有使用者回報問題而少了monitoring便如同瞎子摸象找不到真正的癥結，god與lograge可以提供良好的process監控與log紀錄，Rails不只可以拿來創造出prototype，更可以建立出一個scalable的服務，並與agile development相輔相成。</p>
+
+<p>在議程中來自新加坡的Wei Lu介紹pair programming，她的英文講得好快好流利，在大學期間來就讀過三間不同大學且在不同的國家，pair programming就是兩個人一起寫code，一個人打字，另一個人提供意見並閱讀程式碼，在過程中互相溝通討論，這樣不但可以交換彼此的意見，也可以互相學習，了解自己的缺點學習別人的優點，在問答時也有人詢問是否能和她一起pair programming，是一個很有趣的sessions，Yohei在lightning talk中更介紹了remote pair programming，透過<a href="http://screenx.tv/">screenX TV</a>來讓遠端的夥伴看到你的terminal，這次lightning talk多達23個，每一個主題都十分有趣且實用，如XDite的Bootstrappers介紹、eddie的是真男人就要用vim、高橋征義的簡報等等，eddie高見龍也在第二天帶大家用vim導讀了ruby source code，joseph介紹了rubymotion，以ruby code來打造iOS app，更現場live coding，在這次rubyConf很多過去在網路、部落格看到的前輩們一一浮現在眼前真的很難能可貴，也在這短短的兩天體會到 :</p>
+
+<ul>
+<li>英文是必需品</li>
+<li>發表是最好的記憶，分享是最好的學習方式</li>
+<li>學會問問題，培養勇氣問問題</li>
+</ul>
+
+
+<p>感謝所有的講者、主辦籌畫者與場務人員才有如此高品質的活動，讓大家學習新知、拓展視野、朝拜大神、社群同樂(開幕16字箴言)，也讓第一次參加的我受益良多，十分感謝!希望未來也可以參加到RubyConf.tw 2013|2014?</p>
+
+<p>btw,也希望可以參加到一月份的WebConf2013 :3</p>
+
+<p><a href="http://www.flickr.com/photos/88903392@N05/8625196302/" title="Flickr 上 andikan 的 withMatz"><img src="http://farm9.staticflickr.com/8534/8625196302_297734aeb5_z.jpg" width="383" height="640" alt="withMatz"></a>
+↑與Matz的合照 : p</p>
+
+<p>RubyConf.tw 2012 session slide list : <a href="https://github.com/linc01n/rubyconftw2012">https://github.com/linc01n/rubyconftw2012</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在 Ubuntu 安裝 R]]></title>
+    <link href="http:///blog/2012/11/12/install-r-in-ubuntu/"/>
+    <updated>2012-11-12T06:03:00+08:00</updated>
+    <id>http:///blog/2012/11/12/install-r-in-ubuntu</id>
+    <content type="html"><![CDATA[<p>在 Ubuntu 環境下安裝 R 只需要一行指令</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install r-base  # or
+</span><span class='line'>$ sudo apt-get install r-recommended</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>等待安裝完畢後即可按 R 來進入互動命令列進行簡單的操作。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cookies 和 Session 的神秘關係]]></title>
+    <link href="http:///blog/2012/10/03/cookie-and-session/"/>
+    <updated>2012-10-03T11:55:00+08:00</updated>
+    <id>http:///blog/2012/10/03/cookie-and-session</id>
+    <content type="html"><![CDATA[<p>由於HTTP協定中stateless的性質，當每一次client在對Server發送request時，前後的要求並不會互相影響，server並不會紀錄之前的狀態，也因此可以使用較少的系統資源來服務較多的client，而要讓server記住client的行為與資料時，就需要cookies與session的協助。</p>
+
+<h3>cookies</h3>
+
+<p>當server想要儲存使用者的某些狀態時，就可以發送cookie給client，cookie是http header裡面其中一個欄位，cookie裡的資料以key/value的形式儲存，cookies通常儲存在client的瀏覽器中，也因此若當cookie並沒有加密時，在傳送的過程中容易被攔截或盜取，故並不鼓勵以cookie儲存一些敏感的資料，除了加密之外，更要設定時間在不需要cookie的時候將它刪除。<br/>
+每個cookies的檔案最大只能到4k，在使用者瀏覽網站的時候瀏覽器會將cookie儲存在記憶體中，當瀏覽器關閉時，尚未expire的cookies會被存進文字檔中，並等待下次連線使用。</p>
+
+<!--more-->
+
+
+<h3>session</h3>
+
+<p>相對於cookies處存在client端，session則是儲存在server端，session也需要cookie的輔助才能產生運作，因為server會傳送存有session id的cookie給client，並在server端建立起這個session id的檔案，在之後client在瀏覽網頁時都會夾帶此session id，如此一來server即可從此session id來辨認每個使用者所儲存的狀態與data。相對於cookies，session多用來儲存敏感的資料，也常常成為攻擊的目標，如<a href="http://knowledge.twisc.ntust.edu.tw/doku.php?id=3%E4%BC%BA%E6%9C%8D%E7%AB%AF%E5%AE%89%E5%85%A8:3-2%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%BC%B1%E9%BB%9E:Session%20hijacking">session hijacking</a>。</p>
+
+<h3>session in node.js</h3>
+
+<p>在<a href="https://npmjs.org/">npm</a>中有許多與session相關的module，而在express中是使用connect middleware來實現session功能，預設是儲存在記憶體中，當網站規模變大時，變需要透過資料庫作儲存，如<a href="https://github.com/visionmedia/connect-redis">redis</a>、<a href="https://github.com/masylum/connect-mongodb">mongoDB</a>、<a href="https://github.com/tdebarochez/connect-couchdb">couchDB</a>等等，在這裡簡單介紹express中session的使用方式。</p>
+
+<p>在app.js中必須有這兩行的設定：</p>
+
+<figure class='code'><figcaption><span>app.js </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// in the app.configure</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">cookieParser</span><span class="p">());</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">session</span><span class="p">({</span> <span class="nx">secret</span><span class="o">:</span> <span class="s1">&#39;andikan&#39;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>這樣的設定可以直接在指令產生express app時加上&ndash;session or -s 作設定。<br/>
+接著就可以使用session了！例如：</p>
+
+<figure class='code'><figcaption><span>create and read session </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;andy&#39;</span><span class="p">;</span>  <span class="c1">// set a session {name:&#39;andy&#39;}</span>
+</span><span class='line'><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">maxAge</span> <span class="o">=</span> <span class="mi">3600000</span><span class="p">;</span> <span class="c1">// set the session expire after an hour.</span>
+</span><span class='line'><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>  <span class="c1">// destroys the session and re-generated next request.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> <br/>
+document可參閱<a href="http://www.senchalabs.org/connect/middleware-session.html">connect session</a></p>
+
+<h4>reference</h4>
+
+<p><a href="http://www.jollen.org/php/216_session_cookies/">Jollen&rsquo;s PHP</a><br/>
+<a href="http://knowledge.twisc.ntust.edu.tw/doku.php?id=3%E4%BC%BA%E6%9C%8D%E7%AB%AF%E5%AE%89%E5%85%A8:3-1%E4%BC%BA%E6%9C%8D%E5%99%A8%E7%AE%A1%E7%90%86:session%E5%92%8Ccookie%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%B8%B6%E4%BE%86%E7%9A%84web%E9%A2%A8%E9%9A%AA">TWISC@NTUST網路應用安全知識庫</a><br/>
+<a href="http://fred-zone.blogspot.tw/2011/11/nodejs-express-cookie-based-session.html">Fred&rsquo;s blog</a><br/>
+<a href="http://blog.hinablue.me/entry/nodejs-first-look-part-2">HINA blog</a><br/>
+<a href="http://www.hacksparrow.com/sessions-in-express-js-node-js-web-framework.html">hack sparrow</a><br/>
+<a href="http://blog.nodejitsu.com/sessions-and-cookies-in-node">nodejitsu</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[node.js Template Engine]]></title>
+    <link href="http:///blog/2012/09/26/nodejs-template-engine/"/>
+    <updated>2012-09-26T23:56:00+08:00</updated>
+    <id>http:///blog/2012/09/26/nodejs-template-engine</id>
+    <content type="html"><![CDATA[<p>幾乎每一種程式語言都有各自的template engine，可以讓變數快速產生在web page上，<br/>
+各個語言的的template engine與比較可點閱：<a href="http://goo.gl/ywsLx">wiki-Template engine(web)</a></p>
+
+<!--more-->
+
+
+<p></p>
+
+<p>而在node.js中也有許多template engine可以選擇：<a href="https://github.com/joyent/node/wiki/modules#wiki-templating" title="node.js template engine">node.js template engine</a><br/>
+其中express也支援許多template engine，像是：<br/>
+* haml.js : implementation of Haml, Haml多用於ruby on rails<br/>
+* Jade : 屬於 express default template engine，haml.js的後繼者<br/>
+* ejs : Embedded Javascript, 與 Rails 預設的 Embedded Ruby(erb) 十分相似<br/>
+* Blade : inspired by Jade &amp; Haml<br/>
+* Swig : inspired by Django, Jinja, and Twig，適合python Django的開發者<br/>
+* TwigJS : 從PHP的template engine Twig沿生而來</p>
+
+<p>選擇一個自己喜歡的template engine可以加速開發的速度，本身對於 Jade 簡潔的語法還不太適應，所以較常使用 ejs，因為與 erb 很像很容易熟悉與上手，用  Jade 少打 end tag 感覺怪怪的～</p>
+
+<h3>References</h3>
+
+<p><a href="http://www.quora.com/What-is-the-best-node-js-template-engine">quora.com</a><br/>
+<a href="http://www.csser.com/board/4f3f516e38a5ebc978000504">csser.com</a><br/>
+<a href="http://stackoverflow.com/questions/1787716/is-there-a-template-engine-for-node-js">stackoverflow.com</a><br/>
+<a href="http://ihower.tw/rails3/actionview.html">ihower.tw</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[翁老師的作業管理]]></title>
+    <link href="http:///blog/2012/09/25/operating-management/"/>
+    <updated>2012-09-25T19:39:00+08:00</updated>
+    <id>http:///blog/2012/09/25/operating-management</id>
+    <content type="html"><![CDATA[<p>開學第三個禮拜了還是不太清楚翁老師的資訊管理導論和作業管理之間的差別，但今天上完了三節課卻讓我有種想把一些打下來的衝動～隔了一年又聽見翁老師熟悉的論調感覺有不一樣的體會，就好像同一本書不同年齡讀會有不一樣的領悟一般。企業往往從兩個方向提昇競爭力：降低成本和增加生產力，但這兩個因素卻時常會互相衝突，一旦降低成本變降低生產力，增加生產力後也同時增加成本，魚與熊掌不可兼得，這時便需要衡量決策背後的附加價值，附加價值一旦浮現，自然很容易選出適合的決策，而維持企業競爭力很重要的工具即是KPI(Key Performance Indicators)，將一段時期的員工、部門以客觀可衡量的績效指標作為表現，如同儀表板一般決定企業的發展方向，而管理者必須謹慎拿捏KPI的擬定，如同企業的掌舵者，少許的偏差都有可能對企業的成長造成很大的影響。</p>
+
+<!--more-->
+
+
+<p>
+今天依然聽見很多翁老師的名言，總是可以把一些看似平易卻又難以理解的管理哲學濃縮成一兩句話：</p>
+
+<blockquote><p>賺錢的地方不賺錢，不賺錢的地方賺錢</p></blockquote>
+
+<p>邁入微利時代，原本企業的主要研發的產品與服務往往不是利潤的來源，而是透過累積而成的客戶資料做出更深入的市場與客戶分析，讓主要產品與服務找到其他應用來真正滿足市場需求，如同google搜尋引擎背後帶來龐大的廣告效應，amazon從網路書店發展至今以無法確切定義是怎麼樣的公司，amazon的AWS已讓雲端運算服務成為實際可以隨時取用的資源，大幅降低了企業對於資訊科技投資的固定成本，從客戶的實質消費紀錄可以做出許多分析與歸納，如我們每一個在google下的搜尋關鍵字都屬於google的客戶紀錄，根據這些紀錄可以實現精準行銷的概念，讓適當的廣告出現在適當的使用者面前。</p>
+
+<blockquote><p>矛盾的思維才能創造優勢</p></blockquote>
+
+<p>在M型社會下，中間價格的產品反而乏人問津，高品質、高價格的產品與價格平價且富有特色的產品往往能產生銷售熱潮，顯而易見的思考方式已無法激起市場的漣漪，很多事情別人說了就能理解，自己卻無法自然歸納出這些想法，如今天老師提到服務品質該如何衡量，我剛開始一直往客戶接受服務後的反應與回客率的想法出發，但老師的觀點是：</p>
+
+<blockquote><p>服務品質 ＝ 服務後的認知 - 服務前的期望</p></blockquote>
+
+<p>這樣的觀點更牽扯到產品行銷方法中若讓顧客產生過高的期望，反而無法維持長期良好的服務品質，但也有另一派的心理學角度認為，好的期望可以帶來好的認知，就好比教育小孩一樣，在讚美的環境下成長的小孩有時可以有更好的發展，這樣的想法好難在自己閱讀中歸納而成。</p>
+
+<p>遇到問題最怕的是不知道從哪裡下手，尤其管理層面的問題往往需要一套經驗累積而成的思維模式，老師在課堂上教的往往是一種大方向的架構，並一步一步傳授屬於他自己的思維模式，老師也提到管理學院常討論的 strategy 和 vision 常常被人認為是空談，但在真正身為企業的領導者需要面臨的問題往往不是技術層面的細節，恰好今天inside文章<a href="http://www.inside.com.tw/2012/09/25/marissa-mayer-reveals-her-yahoo-turnaround-plan" title="Marissa Mayer 重振雅虎計劃曝光：從首頁和搜尋開始，重點擺在八大關鍵產品">Marissa Mayer 重振雅虎計劃曝光：從首頁和搜尋開始，重點擺在八大關鍵產品</a>提到，yahoo CEO Marissa Mayer 即將公佈命名為「戰略與願景」（strategy and vision）的重振雅虎計劃，這兩個名詞背後卻隱含了企業發展的方向與動脈。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在 Ubuntu 12.04 安裝 node.js]]></title>
+    <link href="http:///blog/2012/09/24/nodejs-environment-setup/"/>
+    <updated>2012-09-24T01:50:00+08:00</updated>
+    <id>http:///blog/2012/09/24/nodejs-environment-setup</id>
+    <content type="html"><![CDATA[<p>使用 nvm(Node Version Manage) 來安裝 node.js,<br/>
+預先需要 curl, git, g++ :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install git-core g++ curl</span></code></pre></td></tr></table></div></figure>
+
+
+<p> <br/>
+接著即可用以下指令安裝 :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git://github.com/creationix/nvm.git ~/.nvm
+</span><span class='line'>$ echo ". ~/.nvm/nvm.sh" >> ~/.bashrc</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<!--more-->
+
+
+<p>
+重新開啟 terminal 或是打<code>source ~/.bashrc</code>或<code>. ~/.bashrc</code> 載入新的bashrc設定到目前bash環境中, 接著 :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ nvm install v0.8.9 # install current version, take some time
+</span><span class='line'>$ nvm alias default v0.8.9 # set default node version
+</span><span class='line'>$ node -v # verify</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>node.js 在 0.6.3 之後的版本開始內建 npm (Node Package Management),  <br/>
+可用 npm -v 作確認</p>
+
+<p>更多 node.js resource 可點閱 ： <a href="http://www.nodecloud.org/" title="NodeCloud">NodeCloud</a><br/>
+npm rank ： <a href="http://eirikb.github.com/nipster/" title="Nipster">Nipster</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu英文介面下的中文輸入(ibus)]]></title>
+    <link href="http:///blog/2012/09/23/ubuntu-keyboard-input/"/>
+    <updated>2012-09-23T22:06:00+08:00</updated>
+    <id>http:///blog/2012/09/23/ubuntu-keyboard-input</id>
+    <content type="html"><![CDATA[<p>在 Ubuntu 12.04 下，當使用英文介面時，需要中文輸入時的一些設定,<br/>
+進入system setting -> Language Support 中,<br/>
+在 Keyboard Input method system 選擇 ibus,<br/>
+右上角中即會產生一個鍵盤的小icon, 點下這個icon後選preferences,<br/>
+在Input Method 中勾選 Customize active input methods, 可以點add加入需要的中文輸入法(如新酷音),<br/>
+切換成ibus的input method 預設快速鍵 是Ctrl + space,<br/>
+當右上方沒有出現小鍵盤的icon時, 可下command來重新啟動ibus :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ibus-daemon -x -r -d</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<h3>Sublime-text 中文輸入問題</h3>
+
+<p>在 ubuntu 的 sublime-text 中無法直接使用ibus作中文輸入,
+需要其他 plugin 來作輔助, 目前找到的方法是<a href="https://github.com/xgenvn/InputHelper" title="InputHelper">InputHelper</a>
+, 安裝這個 plugin :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/.config/sublime-text-2/Packages
+</span><span class='line'>git clone https://github.com/xgenvn/InputHelper.git</span></code></pre></td></tr></table></div></figure>
+
+
+<p>很大的缺點在於輸入中文時需要先按 Ctrl+Shift+Z, 會跳出一個視窗來作輸入,<br/>
+希望可以找到其他更方便的sublime-text in Ubuntu 中文輸入解決方法 ~</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[第一篇文章]]></title>
+    <link href="http:///blog/2012/09/22/the-first-post/"/>
+    <updated>2012-09-22T05:47:00+08:00</updated>
+    <id>http:///blog/2012/09/22/the-first-post</id>
+    <content type="html"><![CDATA[<p>早睡可以讓自己少睡一點<br/>
+晚睡只能讓自己越睡越多, 越睡越累<br/>
+第一篇文章就辭窮了<br/>
+再過幾小時就是第十屆資種的始業式~</p>
+
+<figure class='code'><figcaption><span>Octopress command </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">generate</span> <span class="c1"># Generating Site with Jekyll, Successfully generated site: source -&gt; public</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">preview</span> <span class="c1"># Preview at port 4000</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">deploy</span> <span class="c1"># Github Pages deploy</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rake</span> <span class="n">new_post</span><span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span> <span class="c1"># Create new post</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+</feed>

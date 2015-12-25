@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>CGAL, Qt 在 Mac OS X 安裝編譯與執行 - andikan</title>
+  <meta name="author" content="Han-Chih Kuo">
+
+  
+  <meta name="description" content="這個月買了新電腦，希望將Geometric Modeling課程中的作業轉移到MacOS X上編譯執行，助教和網路上許多教學文都是Windows下用Visual Studio之相關安裝流程，故在轉移上遇到許多問題，但在最後不斷嘗試的結果下終於可以編譯並執行，過程中許多設定還有地方和細節不明就裡， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http:///blog/2013/04/13/cgal-on-macos-x/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="andikan" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35006459-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  <meta http-equiv="refresh" content="0; url=http://blog.andikan.me/2013/04/13/cgal-on-macos-x/" />
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">andikan</a></h1>
+  
+    <h2>andikan.blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">CGAL, Qt 在 Mac OS X 安裝編譯與執行</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-04-13T10:00:07+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:00 am</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>這個月買了新電腦，希望將Geometric Modeling課程中的作業轉移到MacOS X上編譯執行，助教和網路上許多教學文都是Windows下用Visual Studio之相關安裝流程，故在轉移上遇到許多問題，但在最後不斷嘗試的結果下終於可以編譯並執行，過程中許多設定還有地方和細節不明就裡，但在此做一個簡短的記錄，go！</p>
+
+<!--more-->
+
+
+<p>剛開始希望能直接使用Xcode作為IDE，並先裝了Xcode，之後再從Xcode中的Preferences -> Downloads 點選下載Command line Tools來安裝編譯器和指令工具如LLVM、Make，再以Homebrew做為套件管理工具來簡化之後安裝流程，以一行指令即可安裝Homebrew：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Homebrew可以用來安裝許多套件與程式，透過ruby所寫的formula簡化安裝流程，不用再從每個套件的官方網站下載編譯，接下來就可以用它來一個一個安裝所需要的library與framework了。</p>
+
+<ul>
+<li>Boost C++ Libraries
+直接以</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install boost
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+即可安裝至 /usr/local/Cellar資料夾底下，Homebrew會建立一個Cellar(酒窖)的資料夾來放置一個個套件(bottle)，移除也相當容易，只要：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew uninstall formula
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+就可以快速的移除不需要的套件，更多formula可以從<a href="https://github.com/mxcl/homebrew/tree/master/Library/Formula">https://github.com/mxcl/homebrew/tree/master/Library/Formula</a> 尋找，或是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew search formula
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+來尋找需要的套件。</p>
+
+<ul>
+<li>libQGLViewer C++ library, Qt<br/>
+接著安裝3D視覺化相關library，因為此library相依於Qt，故在</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install libqglviewer
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+過程中就會安裝好Qt與Qt相依的套件，所有套件都會在同一個/usr/local/Cellar資料夾下。</p>
+
+<ul>
+<li>Cmake    <br/>
+cross platform make，在安裝CGAL時需用cmake來build。</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install cmake
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<ul>
+<li>CGAL    <br/>
+Computational Geometry Algorithms Library</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install cgal --imaging
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+安裝時需加上&ndash;imaging選項來增加此library對Qt的支援。</p>
+
+<p>接下來便可以開始一個Qt project了，先開一個資料夾並把撰寫好的.cpp, .h放進去，先將課程assignment的skeleton code放入此資料夾中，並cd至此資料夾，接著：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qmake -project</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+來產生一個.pro的設定檔，這個設定檔將用來產生Makefile。原本以為可以透過qmake -spec macx-xcode projectname.pro來產生Xcode project設定檔便可以在Xcode上編輯，但一直失敗，無法將專案從Xcode上開啟，但不能氣餒繼續嘗試，開始編輯.pro檔中的設定參數，以下為目前嘗試的設定方法：</p>
+
+<figure class='code'><figcaption><span>Here&#8217;s an example .pro file. </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">TEMPLATE</span> <span class="o">=</span> app
+</span><span class='line'><span class="nv">TARGET</span> <span class="o">=</span>
+</span><span class='line'>DEPENDPATH +<span class="o">=</span> .
+</span><span class='line'><span class="c"># include headers</span>
+</span><span class='line'>INCLUDEPATH +<span class="o">=</span> /usr/local/Cellar/cgal/4.1/include <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/gmp/5.1.1/include <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/boost/1.53.0/include <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/libqglviewer/2.3.17/QGLViewer.framework/Headers <span class="se">\</span>
+</span><span class='line'>               /usr/local/Cellar/qt/4.8.4/include
+</span><span class='line'><span class="c"># include libraries and framework</span>
+</span><span class='line'>LIBS +<span class="o">=</span> -L/usr/local/Cellar/cgal/4.1/lib <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/gmp/5.1.1/lib <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/boost/1.53.0/lib <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/libqglviewer/2.3.17/QGLViewer.framework/Headers <span class="se">\</span>
+</span><span class='line'>        -L/usr/local/Cellar/qt/4.8.4/lib
+</span><span class='line'>LIBS +<span class="o">=</span> -lssl -lcrypto
+</span><span class='line'>LIBS +<span class="o">=</span> -lCGAL
+</span><span class='line'>QMAKE_LFLAGS +<span class="o">=</span> -F/usr/local/Cellar/libqglviewer/2.3.17/
+</span><span class='line'>LIBS +<span class="o">=</span> -framework QGLViewer
+</span><span class='line'>
+</span><span class='line'><span class="c"># qt include</span>
+</span><span class='line'>QT +<span class="o">=</span> xml opengl
+</span><span class='line'>
+</span><span class='line'><span class="c"># Input</span>
+</span><span class='line'>HEADERS +<span class="o">=</span> CControlPanel.h <span class="se">\</span>
+</span><span class='line'>           CMainWindow.h <span class="se">\</span>
+</span><span class='line'>           CMesh.h <span class="se">\</span>
+</span><span class='line'>           CMeshViewer.h <span class="se">\</span>
+</span><span class='line'>           Define.h <span class="se">\</span>
+</span><span class='line'>           IncludeLib.h <span class="se">\</span>
+</span><span class='line'>           MeshIO.h <span class="se">\</span>
+</span><span class='line'>           OpenGLUtil.h
+</span><span class='line'>FORMS +<span class="o">=</span> CMainWindow.ui
+</span><span class='line'>SOURCES +<span class="o">=</span> CControlPanel.cpp <span class="se">\</span>
+</span><span class='line'>           CMainWindow.cpp <span class="se">\</span>
+</span><span class='line'>           CMesh.cpp <span class="se">\</span>
+</span><span class='line'>           CMeshViewer.cpp <span class="se">\</span>
+</span><span class='line'>           main.cpp <span class="se">\</span>
+</span><span class='line'>           MeshIO.cpp <span class="se">\</span>
+</span><span class='line'>           OpenGLUtil.cpp
+</span><span class='line'>
+</span><span class='line'>CONFIG +<span class="o">=</span> console
+</span><span class='line'>CONFIG -<span class="o">=</span> app_bundle
+</span><span class='line'>CONFIG +<span class="o">=</span> x86_64
+</span><span class='line'>CONFIG -<span class="o">=</span> i386
+</span><span class='line'>
+</span><span class='line'><span class="c"># compiler setting</span>
+</span><span class='line'><span class="nv">QMAKE_CC</span> <span class="o">=</span> gcc
+</span><span class='line'><span class="nv">QMAKE_CXX</span> <span class="o">=</span> g++
+</span><span class='line'>
+</span><span class='line'>QMAKE_CFLAGS_X86_64 +<span class="o">=</span> -mmacosx-version-min<span class="o">=</span>10.7
+</span><span class='line'><span class="nv">QMAKE_CXXFLAGS_X86_64</span> <span class="o">=</span> <span class="nv">$$</span>QMAKE_CFLAGS_X86_64
+</span><span class='line'>
+</span><span class='line'><span class="c"># libQGLviewer setting</span>
+</span><span class='line'><span class="nv">QGLVIEWER_STATIC</span> <span class="o">=</span> yes
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>接著再用此.pro檔產生Makefile</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qmake projectname.pro  #change to your project name</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>產生Makefile後就可以開始make來編譯程式了，若順利編譯成功則會產生一個執行檔，執行時可能會發生找不到QGLViewer framework的狀況，還須將此建立一個symbolic link到/Library/Frameworks裡：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo ln -s /usr/local/Cellar/libqglviewer/2.3.17/QGLViewer.framework /Library/Frameworks/QGLViewer.framework
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>如此即可成功執行，也可使用各種文字編輯器撰寫相容於CGAL, Qt, QGLViewer library之相關程式了。</p>
+
+<h3>References :</h3>
+
+<p><a href="http://www.informit.com/articles/article.aspx?p=1405563&amp;seqNum=2">http://www.informit.com/articles/article.aspx?p=1405563&amp;seqNum=2</a><br/>
+<a href="http://bitdewy.github.io/blog/2012/12/09/qt-xcode-hello/">http://bitdewy.github.io/blog/2012/12/09/qt-xcode-hello/</a>
+<a href="http://www.libqglviewer.com/compilation.html">http://www.libqglviewer.com/compilation.html</a><br/>
+<a href="http://stackoverflow.com/questions/4900230/help-getting-started-with-qt">http://stackoverflow.com/questions/4900230/help-getting-started-with-qt</a><br/>
+<a href="https://cours.etsmtl.ca/log750/share/simpleViewer.pro">https://cours.etsmtl.ca/log750/share/simpleViewer.pro</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Han-Chih Kuo</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-04-13T10:00:07+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cgal/'>cgal</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http:///blog/2013/04/13/cgal-on-macos-x/" data-via="andikankuo" data-counturl="http:///blog/2013/04/13/cgal-on-macos-x/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/01/30/data-uri/" title="Previous Post: 將瀏覽器變成記事本">&laquo; 將瀏覽器變成記事本</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/05/08/bower-from-twitter/" title="Next Post: Bower - A package manager for web">Bower - A package manager for web &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/24/qt-project-in-xcode/">Qt 4.8.4 Project Created With Qmake Fail to Open in Xcode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/17/judgment-and-decision/">What Can Bring Me Down</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/08/bower-from-twitter/">Bower - a Package Manager for Web</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/cgal-on-macos-x/">CGAL, Qt 在 Mac OS X 安裝編譯與執行</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/30/data-uri/">將瀏覽器變成記事本</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/andikan">@andikan</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'andikan',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/andikan?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/andikan">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Han-Chih Kuo -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'andikanblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http:///blog/2013/04/13/cgal-on-macos-x/';
+        var disqus_url = 'http:///blog/2013/04/13/cgal-on-macos-x/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

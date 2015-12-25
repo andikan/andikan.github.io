@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Bower - a Package Manager for Web - andikan</title>
+  <meta name="author" content="Han-Chih Kuo">
+
+  
+  <meta name="description" content="Bower是一個來自twitter用來管理網站套件的工具，一個front-end的套件管理工具，用來方便管理專案中各種前端所需要的javascript librarys, frameworks, 和 modules，也包含許多html/css等assets，有近兩千種components在其上， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http:///blog/2013/05/08/bower-from-twitter/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="andikan" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35006459-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  <meta http-equiv="refresh" content="0; url=http://blog.andikan.me/2013/05/08/bower-from-twitter/" />
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">andikan</a></h1>
+  
+    <h2>andikan.blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Bower - a Package Manager for Web</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-05-08T09:21:40+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:21 am</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img src="http://farm8.staticflickr.com/7368/8717219451_ff5da4959c_z.jpg" title="Bower twitter" alt="Bower twitter" /></p>
+
+<p><a href="https://github.com/bower/bower">Bower</a>是一個來自twitter用來管理網站套件的工具，一個front-end的套件管理工具，用來方便管理專案中各種前端所需要的javascript librarys, frameworks, 和 modules，也包含許多html/css等assets，有近兩千種components在其上，使用起來相當方便，在include第三方package時不再需要一個個下載，可直接寫好packages相依性即可快速安裝各種js檔案進入專案資料夾中。</p>
+
+<!--more-->
+
+
+<p></p>
+
+<p>首先就是先安裝bower，透過npm快速安裝(installed bower globally)：<br/>
+<code>npm install bower -g</code></p>
+
+<p>接著可以在家目錄或是project目錄下建立一個.bowerrc的設定檔，這個設定檔用來控制預設安裝的路徑與搜尋路徑等等，以JSON格式撰寫：</p>
+
+<figure class='code'><figcaption><span>An example .bowerrc </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;directory&quot;</span><span class="o">:</span> <span class="s2">&quot;javascripts/components&quot;</span><span class="p">,</span>           <span class="c1">// 預設安裝路徑資料夾</span>
+</span><span class='line'>  <span class="s2">&quot;endpoint&quot;</span><span class="o">:</span> <span class="s2">&quot;https://bower.mycompany.com&quot;</span><span class="p">,</span>       <span class="c1">// 指定bower server，預設為bower官方server</span>
+</span><span class='line'>  <span class="s2">&quot;json&quot;</span><span class="o">:</span> <span class="s2">&quot;bower.json&quot;</span><span class="p">,</span>                            <span class="c1">// 設定各個專案的bower設定檔案名稱</span>
+</span><span class='line'>  <span class="s2">&quot;searchpath&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;https://bower.herokuapp.com&quot;</span> <span class="p">],</span> <span class="c1">// 用來指定搜尋路徑，首要會先從endpoint開始搜尋，接著到searchpath依次搜尋</span>
+</span><span class='line'>  <span class="s2">&quot;shorthand_resolver&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>                         <span class="c1">// 定義package的縮寫格式</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+<a href="https://github.com/bower/bower-server">一個簡單的bower server</a></p>
+
+<p>在進入專案資料夾後即可快速開起bower設定檔，預設為bower.json，如同node.js中的<code>package.json</code>或ruby的<code>Gemfile</code>角色，只是管理的內容不同：<code>bower init</code></p>
+
+<p>在bower.json的package設定上也很容易：</p>
+
+<figure class='code'><figcaption><span>An example .bowerrc </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;project-name&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;dependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;&lt;name&gt;&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;version&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;&lt;name&gt;&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;folder&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;&lt;name&gt;&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;package&gt;&quot;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+依照這樣的方式把自己需要的packages一個個條列出來，在按下：<code>bower install</code><br/>
+即可將bower.json中所有相依的packages一次通通下載入.bawerrc中設定的預設資料夾中，使用起來和package.json十分相似。</p>
+
+<p>另外bower當然也提供互動式指令，如：<br/>
+<code>bower search [&lt;name&gt;]</code><br/>
+<code>bower list</code><br/>
+<code>bower install [&lt;name&gt;]</code><br/>
+<code>bower install [&lt;name&gt;]  --save</code>  // 安裝後直接加入到bower.json中的dependencies裡。<br/>
+<code>bower uninstall &lt;name&gt;</code></p>
+
+<p>也可將自己所寫的package快速註冊到bower server中：<br/>
+<code>bower register &lt;my-package-name&gt; &lt;git-endpoint&gt;</code></p>
+
+<p><a href="https://github.com/bower/bower">Bower</a>使用上真的很直覺也和node.js中的npm類似，十分親近且實用的前端套件管理系統，<br/>
+也可在這個網站<a href="http://sindresorhus.com/bower-components/">Bower components</a>搜尋bower所成列的packages。</p>
+
+<p>References：<br/>
+<a href="http://bower.io/">http://bower.io/</a><br/>
+<a href="http://net.tutsplus.com/tutorials/tools-and-tips/meet-bower-a-package-manager-for-the-web/">http://net.tutsplus.com/tutorials/tools-and-tips/meet-bower-a-package-manager-for-the-web/</a><br/>
+<a href="http://sindresorhus.com/bower-components/">http://sindresorhus.com/bower-components/</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Han-Chih Kuo</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-05-08T09:21:40+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:21 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http:///blog/2013/05/08/bower-from-twitter/" data-via="andikankuo" data-counturl="http:///blog/2013/05/08/bower-from-twitter/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/13/cgal-on-macos-x/" title="Previous Post: CGAL, Qt 在 Mac OS X 安裝編譯與執行">&laquo; CGAL, Qt 在 Mac OS X 安裝編譯與執行</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/05/17/judgment-and-decision/" title="Next Post: What can bring me down">What can bring me down &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/24/qt-project-in-xcode/">Qt 4.8.4 Project Created With Qmake Fail to Open in Xcode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/17/judgment-and-decision/">What Can Bring Me Down</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/08/bower-from-twitter/">Bower - a Package Manager for Web</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/cgal-on-macos-x/">CGAL, Qt 在 Mac OS X 安裝編譯與執行</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/30/data-uri/">將瀏覽器變成記事本</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/andikan">@andikan</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'andikan',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/andikan?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/andikan">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Han-Chih Kuo -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'andikanblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http:///blog/2013/05/08/bower-from-twitter/';
+        var disqus_url = 'http:///blog/2013/05/08/bower-from-twitter/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

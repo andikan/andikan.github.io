@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Javascript | andikan]]></title>
+  <link href="http:///blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http:///"/>
+  <updated>2015-12-25T18:33:13+08:00</updated>
+  <id>http:///</id>
+  <author>
+    <name><![CDATA[Han-Chih Kuo]]></name>
+    <email><![CDATA[andikan.io@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bower - a Package Manager for Web]]></title>
+    <link href="http:///blog/2013/05/08/bower-from-twitter/"/>
+    <updated>2013-05-08T09:21:40+08:00</updated>
+    <id>http:///blog/2013/05/08/bower-from-twitter</id>
+    <content type="html"><![CDATA[<p><img src="http://farm8.staticflickr.com/7368/8717219451_ff5da4959c_z.jpg" title="Bower twitter" alt="Bower twitter" /></p>
+
+<p><a href="https://github.com/bower/bower">Bower</a>是一個來自twitter用來管理網站套件的工具，一個front-end的套件管理工具，用來方便管理專案中各種前端所需要的javascript librarys, frameworks, 和 modules，也包含許多html/css等assets，有近兩千種components在其上，使用起來相當方便，在include第三方package時不再需要一個個下載，可直接寫好packages相依性即可快速安裝各種js檔案進入專案資料夾中。</p>
+
+<!--more-->
+
+
+<p></p>
+
+<p>首先就是先安裝bower，透過npm快速安裝(installed bower globally)：<br/>
+<code>npm install bower -g</code></p>
+
+<p>接著可以在家目錄或是project目錄下建立一個.bowerrc的設定檔，這個設定檔用來控制預設安裝的路徑與搜尋路徑等等，以JSON格式撰寫：<br/>
+<figure class='code'><figcaption><span>An example .bowerrc </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">directory</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">javascripts</span><span class="o">/</span><span class="nx">components</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>           <span class="c1">// 預設安裝路徑資料夾</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">endpoint</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;https://bower.mycompany.com&quot;</span><span class="o">&gt;</span><span class="nx">https</span><span class="o">:</span><span class="c1">//bower.mycompany.com&lt;/a&gt;&amp;rdquo;,       // 指定bower server，預設為bower官方server</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">json</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">bower</span><span class="p">.</span><span class="nx">json</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>                            <span class="c1">// 設定各個專案的bower設定檔案名稱</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">searchpath</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="p">[</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;https://bower.herokuapp.com&quot;</span><span class="o">&gt;</span><span class="nx">https</span><span class="o">:</span><span class="c1">//bower.herokuapp.com&lt;/a&gt;&amp;rdquo; ], // 用來指定搜尋路徑，首要會先從endpoint開始搜尋，接著到searchpath依次搜尋</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">shorthand_resolver</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span>                         <span class="c1">// 定義package的縮寫格式</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+<a href="https://github.com/bower/bower-server">一個簡單的bower server</a></p>
+
+<p>在進入專案資料夾後即可快速開起bower設定檔，預設為bower.json，如同node.js中的<code>package.json</code>或ruby的<code>Gemfile</code>角色，只是管理的內容不同：<code>bower init</code></p>
+
+<p>在bower.json的package設定上也很容易：
+<figure class='code'><figcaption><span>An example .bowerrc </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">name</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">project</span><span class="o">-</span><span class="nx">name</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">version</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="mf">1.0</span><span class="p">.</span><span class="mi">0</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">dependencies</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">name</span><span class="o">&gt;&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">version</span><span class="o">&gt;&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">name</span><span class="o">&gt;&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">folder</span><span class="o">&gt;&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">name</span><span class="o">&gt;&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="kr">package</span><span class="o">&gt;&amp;</span><span class="nx">rdquo</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure><br/>
+依照這樣的方式把自己需要的packages一個個條列出來，在按下：<code>bower install</code><br/>
+即可將bower.json中所有相依的packages一次通通下載入.bawerrc中設定的預設資料夾中，使用起來和package.json十分相似。</p>
+
+<p>另外bower當然也提供互動式指令，如：<br/>
+<code>bower search [&lt;name&gt;]</code><br/>
+<code>bower list</code><br/>
+<code>bower install [&lt;name&gt;]</code><br/>
+<code>bower install [&lt;name&gt;]  --save</code>  // 安裝後直接加入到bower.json中的dependencies裡。<br/>
+<code>bower uninstall &lt;name&gt;</code></p>
+
+<p>也可將自己所寫的package快速註冊到bower server中：<br/>
+<code>bower register &lt;my-package-name&gt; &lt;git-endpoint&gt;</code></p>
+
+<p><a href="https://github.com/bower/bower">Bower</a>使用上真的很直覺也和node.js中的npm類似，十分親近且實用的前端套件管理系統，<br/>
+也可在這個網站<a href="http://sindresorhus.com/bower-components/">Bower components</a>搜尋bower所成列的packages。</p>
+
+<p>References：<br/>
+<a href="http://bower.io/">http://bower.io/</a><br/>
+<a href="http://net.tutsplus.com/tutorials/tools-and-tips/meet-bower-a-package-manager-for-the-web/">http://net.tutsplus.com/tutorials/tools-and-tips/meet-bower-a-package-manager-for-the-web/</a><br/>
+<a href="http://sindresorhus.com/bower-components/">http://sindresorhus.com/bower-components/</a></p>
+]]></content>
+  </entry>
+  
+</feed>

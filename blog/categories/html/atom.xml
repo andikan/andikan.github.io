@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Html | andikan]]></title>
+  <link href="http:///blog/categories/html/atom.xml" rel="self"/>
+  <link href="http:///"/>
+  <updated>2015-12-25T18:33:13+08:00</updated>
+  <id>http:///</id>
+  <author>
+    <name><![CDATA[Han-Chih Kuo]]></name>
+    <email><![CDATA[andikan.io@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[將瀏覽器變成記事本]]></title>
+    <link href="http:///blog/2013/01/30/data-uri/"/>
+    <updated>2013-01-30T04:16:00+08:00</updated>
+    <id>http:///blog/2013/01/30/data-uri</id>
+    <content type="html"><![CDATA[<p>在瀏覽器開啟新的分頁並在url tab中輸入 :<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>data:text/html, <span class="nt">&lt;html</span> <span class="na">contenteditable</span><span class="nt">&gt;&lt;br/&gt;</span>
+</span></code></pre></td></tr></table></div></figure><br/>
+或改變字型 ：<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>data:text/html, <span class="nt">&lt;html</span> <span class="na">contenteditable</span> <span class="na">style=</span><span class="s">&#39;font-family: monospace&#39;</span><span class="nt">&gt;</span>  <span class="c">&lt;!-- change font --&gt;</span>
+</span></code></pre></td></tr></table></div></figure><br/>
+瀏覽器變成了可以輸入文字的記事本了！<br/>
+可以用來暫存一些資訊和文字。</p>
+
+<!--more-->
+
+
+<p></p>
+
+<p>這一行使用了 data URI scheme 的語法來讓瀏覽器知道此頁面編碼的方式，這樣的方法多用在當網頁有許多靜態檔案（img,css等）需要載入時，可以用這樣的方法減少 http 的 request，例如當有一個 &lt;img&gt; tag 時，瀏覽器會根據其 src 的值發出 request，若使用 data URI 將圖檔內容放置在此標籤的 src 中，可加入編碼格式如 base64 之編碼方式，這樣瀏覽器便會直接將此 img 標籤以此編碼方式將這個圖形顯示出來，並不會發出 request 來取得圖片。這樣的語法也有其他應用，例如可以將HTML &lt;table&gt; 標籤直接轉換成 csv 格式呈現在瀏覽器上讓使用者進行下載，如 ：<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lsquo;</span>data:text/csv;charset=utf-8,<span class="ni">&amp;rsquo;</span> + encodeURIComponent(data);
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>這樣的瀏覽器筆記本方法都可已將它放置在書籤中，需要時可以馬上點開作使用，此外還有別人完成的類似 sublime text 2 外觀的版本 XD  並加入了 ruby 的 syntax highlighter ，超酷:<br/>
+<div><script src='https://gist.github.com/4666256.js'></script>
+<noscript><pre><code>data:text/html, &lt;style type=&quot;text/css&quot;&gt;#e{position:absolute;top:0;right:0;bottom:0;left:0;}&lt;/style&gt;&lt;div id=&quot;e&quot;&gt;&lt;/div&gt;&lt;script src=&quot;http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;script&gt;var e=ace.edit(&quot;e&quot;);e.setTheme(&quot;ace/theme/monokai&quot;);e.getSession().setMode(&quot;ace/mode/ruby&quot;);&lt;/script&gt;</code></pre></noscript></div>
+
+這樣 coding 也不用離開瀏覽器，可能未來寫好的各種語言的程式都只要用瀏覽器就可以直接compile+run了！</p>
+
+<p>來自 <a href="https://coderwall.com/p/lhsrcq">coderwall.com</a><br/>
+更多js bookmarklets :<a href="http://playpcesor.blogspot.com/2007/10/bookmarklets.html">playpcesor.blogspot.com/2007/10/bookmarklets.html</a></p>
+]]></content>
+  </entry>
+  
+</feed>

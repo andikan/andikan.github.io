@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ubuntu | andikan]]></title>
+  <link href="http:///blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http:///"/>
+  <updated>2015-12-25T18:33:13+08:00</updated>
+  <id>http:///</id>
+  <author>
+    <name><![CDATA[Han-Chih Kuo]]></name>
+    <email><![CDATA[andikan.io@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[在 Ubuntu 安裝 R]]></title>
+    <link href="http:///blog/2012/11/12/install-r-in-ubuntu/"/>
+    <updated>2012-11-12T06:03:00+08:00</updated>
+    <id>http:///blog/2012/11/12/install-r-in-ubuntu</id>
+    <content type="html"><![CDATA[<p>在 Ubuntu 環境下安裝 R 只需要一行指令</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install r-base  # or
+</span><span class='line'>$ sudo apt-get install r-recommended</span></code></pre></td></tr></table></div></figure></p>
+
+<p>等待安裝完畢後即可按 R 來進入互動命令列進行簡單的操作。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu英文介面下的中文輸入(ibus)]]></title>
+    <link href="http:///blog/2012/09/23/ubuntu-keyboard-input/"/>
+    <updated>2012-09-23T22:06:00+08:00</updated>
+    <id>http:///blog/2012/09/23/ubuntu-keyboard-input</id>
+    <content type="html"><![CDATA[<p>在 Ubuntu 12.04 下，當使用英文介面時，需要中文輸入時的一些設定,<br/>
+進入system setting -> Language Support 中,<br/>
+在 Keyboard Input method system 選擇 ibus,<br/>
+右上角中即會產生一個鍵盤的小icon, 點下這個icon後選preferences,<br/>
+在Input Method 中勾選 Customize active input methods, 可以點add加入需要的中文輸入法(如新酷音),<br/>
+切換成ibus的input method 預設快速鍵 是Ctrl + space,<br/>
+當右上方沒有出現小鍵盤的icon時, 可下command來重新啟動ibus :<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ibus-daemon -x -r -d</span></code></pre></td></tr></table></div></figure></p>
+
+<!--more-->
+
+
+<h3>Sublime-text 中文輸入問題</h3>
+
+<p>在 ubuntu 的 sublime-text 中無法直接使用ibus作中文輸入,
+需要其他 plugin 來作輔助, 目前找到的方法是<a href="https://github.com/xgenvn/InputHelper" title="InputHelper">InputHelper</a>
+, 安裝這個 plugin :
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/.config/sublime-text-2/Packages
+</span><span class='line'>git clone &lt;a href="https://github.com/xgenvn/InputHelper.git">https://github.com/xgenvn/InputHelper.git&lt;/a></span></code></pre></td></tr></table></div></figure>
+很大的缺點在於輸入中文時需要先按 Ctrl+Shift+Z, 會跳出一個視窗來作輸入,<br/>
+希望可以找到其他更方便的sublime-text in Ubuntu 中文輸入解決方法 ~</p>
+]]></content>
+  </entry>
+  
+</feed>
